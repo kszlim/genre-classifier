@@ -5,7 +5,7 @@ import glob
 import os
 import matplotlib.pyplot as plt
 from collections import Counter
-
+from math import sqrt
 
 class NumpyAwareJSONEncoder(json.JSONEncoder):
     def default(self, obj):
@@ -18,14 +18,13 @@ directories = ['/home/kszlim/music/classical/', '/home/kszlim/music/rap/', '/hom
 genres = ['rap', 'classical', 'metal', 'electronic']
 # directories = ['/home/kszlim/music/classical/', '/home/kszlim/music/pop/', '/home/kszlim/music/rap/', '/home/kszlim/music/metal/']
 # genres = ['rap', 'classical', 'metal', 'pop']
-#training_data = ['logarithmic_bins_training_data.json', 'linear_bins_training_data.json']
 
 
 def squared_euclidean(arr1, arr2):
 	distance_squared = 0
 	for index, x in enumerate(arr1):
 		distance_squared += (x - arr2[index])**2
-	return distance_squared
+	return sqrt(distance_squared)
 
 def get_filepaths(base_directory):
 	return (base_directory.split('/')[-2], glob.glob(base_directory + '*.mp3') + glob.glob(base_directory + '*.m4a') + glob.glob(base_directory + '*.flac'))
@@ -145,6 +144,21 @@ def knn(input_data, training_data, k=11):
 		knn_results.append({'euclidean': squared_euclidean(input_data, training_value['binned_data']), 'genre': training_value['genre']})
 	return sorted(knn_results, key=lambda x: x['euclidean'])[:k:]
 
+def majority_vote(knn_output):
+	count = Counter()
+	for result in knn_output:
+		count[result['genre']] += 1
+	return count.most_common(1)[0][0], count
+
+def weighted_vote(knn_output):
+	count = Counter()
+	for result in knn_output:
+		if result['euclidean'] == 0.0:
+			count[result['genre']] += 1	
+		else:
+			count[result['genre']] += 1/(float(result['euclidean'])**2)
+	return max(count, key=count.get), count
+
 def cross_validate(bin_types=['logarithmic_bins', 'linear_bins']):
 
 	def create_counter():
@@ -166,16 +180,15 @@ def cross_validate(bin_types=['logarithmic_bins', 'linear_bins']):
 				results[genre]['misclassified_as'] = Counter()
 
 			for test_value in test_data:
-				count = Counter()
+				
+				#print test_value
 				knn_output = knn(test_value['binned_data'], training_data, k)
 				result_genre = test_value['genre']
 				
-				for result in knn_output:
-					count[result['genre']] += 1
-
+				#Voting scheme
+				guessed_genre, count = majority_vote(knn_output)
 				
-				guessed_genre = count.most_common(1)[0][0]
-				test_cases = (k, ('actual genre', result_genre), ('guessed_genre', guessed_genre), count.most_common(), knn_output)
+				test_cases = (k, bin_type, ('actual genre', result_genre), ('guessed_genre', guessed_genre), count.most_common(), knn_output)
 				all_tests.append(test_cases)
 
 				if guessed_genre == result_genre:
@@ -201,6 +214,17 @@ def classify(path, binning_function=logarithmic_bins):
 		count[result['genre']] += 1
 	return count.most_common(1)[0][0], results
 
+def classify_directory(directory):
+	test_files = get_filepaths(directory)[1]
+	count = Counter()
+	for test_file in test_files:
+		try:
+			genre, results = classify(test_file)
+			count[genre] += 1
+		except:
+			continue
+	return count
+	
 def test_results():
 	results, all_tests = cross_validate()
 
@@ -219,22 +243,9 @@ def test_results():
 		json.dump(results, outfile, indent=4, sort_keys=True)
 
 	with open('all_tests.txt', 'w') as outfile:
-		outfile.writelines([str(test) for test in all_tests])
+		outfile.writelines([str(test) +'\n' for test in all_tests])
 
-#create_json_dump()
-# generate_bins()
-# generate_bins(logarithmic_bins)
-test_results()
-
-# test_dir = '/media/kszlim/KevinLimHD/Music/Collection/Music/Foreign Beggars, Bare Noize, Skrillex/Scary Monsters And Nice Sprites/'
-# test_files = get_filepaths(test_dir)[1]
-# count = Counter()
-# for test_file in test_files:
-# 	try:
-# 		genre, results = classify(test_file)
-# 		count[genre] += 1
-# 	except:
-# 		pass		
-
-# print count
-#test_results()
+def regenerate_data():
+	create_json_dump()
+	generate_bins()
+	generate_bins(logarithmic_bins)

@@ -1,758 +1,1316 @@
 {
     "10_linear_bins": {
         "classical": {
-            "Accuracy": 1.0, 
-            "failure": 0, 
-            "success": 29, 
-            "total": 29
+            "Accuracy": 0.8926380368098159, 
+            "failure": 35, 
+            "misclassified_as": {
+                "electronic": 1, 
+                "metal": 33, 
+                "rap": 1
+            }, 
+            "success": 291, 
+            "total": 326
         }, 
-        "dubstep": {
-            "Accuracy": 0.6, 
-            "failure": 12, 
-            "success": 18, 
-            "total": 30
+        "electronic": {
+            "Accuracy": 0.6037735849056604, 
+            "failure": 210, 
+            "misclassified_as": {
+                "classical": 16, 
+                "metal": 60, 
+                "rap": 134
+            }, 
+            "success": 320, 
+            "total": 530
         }, 
         "k-value": 10, 
         "metal": {
-            "Accuracy": 0.5666666666666667, 
-            "failure": 13, 
-            "success": 17, 
-            "total": 30
+            "Accuracy": 0.5772357723577236, 
+            "failure": 208, 
+            "misclassified_as": {
+                "classical": 71, 
+                "electronic": 48, 
+                "rap": 89
+            }, 
+            "success": 284, 
+            "total": 492
         }, 
         "rap": {
-            "Accuracy": 0.42857142857142855, 
-            "failure": 16, 
-            "success": 12, 
-            "total": 28
+            "Accuracy": 0.4663951120162933, 
+            "failure": 262, 
+            "misclassified_as": {
+                "classical": 10, 
+                "electronic": 153, 
+                "metal": 99
+            }, 
+            "success": 229, 
+            "total": 491
         }
     }, 
     "10_logarithmic_bins": {
         "classical": {
-            "Accuracy": 0.9655172413793104, 
-            "failure": 1, 
-            "success": 28, 
-            "total": 29
+            "Accuracy": 0.8680981595092024, 
+            "failure": 43, 
+            "misclassified_as": {
+                "electronic": 2, 
+                "metal": 39, 
+                "rap": 2
+            }, 
+            "success": 283, 
+            "total": 326
         }, 
-        "dubstep": {
-            "Accuracy": 0.6666666666666666, 
-            "failure": 10, 
-            "success": 20, 
-            "total": 30
+        "electronic": {
+            "Accuracy": 0.6716981132075471, 
+            "failure": 174, 
+            "misclassified_as": {
+                "classical": 13, 
+                "metal": 33, 
+                "rap": 128
+            }, 
+            "success": 356, 
+            "total": 530
         }, 
         "k-value": 10, 
         "metal": {
-            "Accuracy": 0.7333333333333333, 
-            "failure": 8, 
-            "success": 22, 
-            "total": 30
+            "Accuracy": 0.5691056910569106, 
+            "failure": 212, 
+            "misclassified_as": {
+                "classical": 104, 
+                "electronic": 18, 
+                "rap": 90
+            }, 
+            "success": 280, 
+            "total": 492
         }, 
         "rap": {
-            "Accuracy": 0.5714285714285714, 
-            "failure": 12, 
-            "success": 16, 
-            "total": 28
+            "Accuracy": 0.5641547861507128, 
+            "failure": 214, 
+            "misclassified_as": {
+                "classical": 1, 
+                "electronic": 128, 
+                "metal": 85
+            }, 
+            "success": 277, 
+            "total": 491
         }
     }, 
     "11_linear_bins": {
         "classical": {
-            "Accuracy": 1.0, 
-            "failure": 0, 
-            "success": 29, 
-            "total": 29
+            "Accuracy": 0.8957055214723927, 
+            "failure": 34, 
+            "misclassified_as": {
+                "electronic": 1, 
+                "metal": 32, 
+                "rap": 1
+            }, 
+            "success": 292, 
+            "total": 326
         }, 
-        "dubstep": {
-            "Accuracy": 0.6, 
-            "failure": 12, 
-            "success": 18, 
-            "total": 30
+        "electronic": {
+            "Accuracy": 0.6094339622641509, 
+            "failure": 207, 
+            "misclassified_as": {
+                "classical": 16, 
+                "metal": 57, 
+                "rap": 134
+            }, 
+            "success": 323, 
+            "total": 530
         }, 
         "k-value": 11, 
         "metal": {
-            "Accuracy": 0.6, 
-            "failure": 12, 
-            "success": 18, 
-            "total": 30
+            "Accuracy": 0.5772357723577236, 
+            "failure": 208, 
+            "misclassified_as": {
+                "classical": 70, 
+                "electronic": 54, 
+                "rap": 84
+            }, 
+            "success": 284, 
+            "total": 492
         }, 
         "rap": {
-            "Accuracy": 0.5357142857142857, 
-            "failure": 13, 
-            "success": 15, 
-            "total": 28
+            "Accuracy": 0.4663951120162933, 
+            "failure": 262, 
+            "misclassified_as": {
+                "classical": 9, 
+                "electronic": 159, 
+                "metal": 94
+            }, 
+            "success": 229, 
+            "total": 491
         }
     }, 
     "11_logarithmic_bins": {
         "classical": {
-            "Accuracy": 0.9655172413793104, 
-            "failure": 1, 
-            "success": 28, 
-            "total": 29
+            "Accuracy": 0.8773006134969326, 
+            "failure": 40, 
+            "misclassified_as": {
+                "electronic": 2, 
+                "metal": 36, 
+                "rap": 2
+            }, 
+            "success": 286, 
+            "total": 326
         }, 
-        "dubstep": {
-            "Accuracy": 0.6666666666666666, 
-            "failure": 10, 
-            "success": 20, 
-            "total": 30
+        "electronic": {
+            "Accuracy": 0.6622641509433962, 
+            "failure": 179, 
+            "misclassified_as": {
+                "classical": 13, 
+                "metal": 34, 
+                "rap": 132
+            }, 
+            "success": 351, 
+            "total": 530
         }, 
         "k-value": 11, 
         "metal": {
-            "Accuracy": 0.7333333333333333, 
-            "failure": 8, 
-            "success": 22, 
-            "total": 30
+            "Accuracy": 0.5670731707317073, 
+            "failure": 213, 
+            "misclassified_as": {
+                "classical": 107, 
+                "electronic": 18, 
+                "rap": 88
+            }, 
+            "success": 279, 
+            "total": 492
         }, 
         "rap": {
-            "Accuracy": 0.75, 
-            "failure": 7, 
-            "success": 21, 
-            "total": 28
+            "Accuracy": 0.560081466395112, 
+            "failure": 216, 
+            "misclassified_as": {
+                "classical": 1, 
+                "electronic": 124, 
+                "metal": 91
+            }, 
+            "success": 275, 
+            "total": 491
         }
     }, 
     "12_linear_bins": {
         "classical": {
-            "Accuracy": 1.0, 
-            "failure": 0, 
-            "success": 29, 
-            "total": 29
+            "Accuracy": 0.8987730061349694, 
+            "failure": 33, 
+            "misclassified_as": {
+                "electronic": 1, 
+                "metal": 31, 
+                "rap": 1
+            }, 
+            "success": 293, 
+            "total": 326
         }, 
-        "dubstep": {
-            "Accuracy": 0.6, 
-            "failure": 12, 
-            "success": 18, 
-            "total": 30
+        "electronic": {
+            "Accuracy": 0.6132075471698113, 
+            "failure": 205, 
+            "misclassified_as": {
+                "classical": 16, 
+                "metal": 56, 
+                "rap": 133
+            }, 
+            "success": 325, 
+            "total": 530
         }, 
         "k-value": 12, 
         "metal": {
-            "Accuracy": 0.5666666666666667, 
-            "failure": 13, 
-            "success": 17, 
-            "total": 30
+            "Accuracy": 0.5813008130081301, 
+            "failure": 206, 
+            "misclassified_as": {
+                "classical": 71, 
+                "electronic": 49, 
+                "rap": 86
+            }, 
+            "success": 286, 
+            "total": 492
         }, 
         "rap": {
-            "Accuracy": 0.4642857142857143, 
-            "failure": 15, 
-            "success": 13, 
-            "total": 28
+            "Accuracy": 0.4745417515274949, 
+            "failure": 258, 
+            "misclassified_as": {
+                "classical": 9, 
+                "electronic": 151, 
+                "metal": 98
+            }, 
+            "success": 233, 
+            "total": 491
         }
     }, 
     "12_logarithmic_bins": {
         "classical": {
-            "Accuracy": 0.9655172413793104, 
-            "failure": 1, 
-            "success": 28, 
-            "total": 29
+            "Accuracy": 0.8834355828220859, 
+            "failure": 38, 
+            "misclassified_as": {
+                "electronic": 2, 
+                "metal": 34, 
+                "rap": 2
+            }, 
+            "success": 288, 
+            "total": 326
         }, 
-        "dubstep": {
-            "Accuracy": 0.6666666666666666, 
-            "failure": 10, 
-            "success": 20, 
-            "total": 30
+        "electronic": {
+            "Accuracy": 0.6584905660377358, 
+            "failure": 181, 
+            "misclassified_as": {
+                "classical": 13, 
+                "metal": 33, 
+                "rap": 135
+            }, 
+            "success": 349, 
+            "total": 530
         }, 
         "k-value": 12, 
         "metal": {
-            "Accuracy": 0.7333333333333333, 
-            "failure": 8, 
-            "success": 22, 
-            "total": 30
+            "Accuracy": 0.5711382113821138, 
+            "failure": 211, 
+            "misclassified_as": {
+                "classical": 110, 
+                "electronic": 19, 
+                "rap": 82
+            }, 
+            "success": 281, 
+            "total": 492
         }, 
         "rap": {
-            "Accuracy": 0.6071428571428571, 
-            "failure": 11, 
-            "success": 17, 
-            "total": 28
+            "Accuracy": 0.570264765784114, 
+            "failure": 211, 
+            "misclassified_as": {
+                "classical": 1, 
+                "electronic": 124, 
+                "metal": 86
+            }, 
+            "success": 280, 
+            "total": 491
         }
     }, 
     "13_linear_bins": {
         "classical": {
-            "Accuracy": 1.0, 
-            "failure": 0, 
-            "success": 29, 
-            "total": 29
+            "Accuracy": 0.8987730061349694, 
+            "failure": 33, 
+            "misclassified_as": {
+                "electronic": 1, 
+                "metal": 31, 
+                "rap": 1
+            }, 
+            "success": 293, 
+            "total": 326
         }, 
-        "dubstep": {
-            "Accuracy": 0.6, 
-            "failure": 12, 
-            "success": 18, 
-            "total": 30
+        "electronic": {
+            "Accuracy": 0.5981132075471698, 
+            "failure": 213, 
+            "misclassified_as": {
+                "classical": 16, 
+                "metal": 60, 
+                "rap": 137
+            }, 
+            "success": 317, 
+            "total": 530
         }, 
         "k-value": 13, 
         "metal": {
-            "Accuracy": 0.5666666666666667, 
-            "failure": 13, 
-            "success": 17, 
-            "total": 30
+            "Accuracy": 0.5853658536585366, 
+            "failure": 204, 
+            "misclassified_as": {
+                "classical": 70, 
+                "electronic": 51, 
+                "rap": 83
+            }, 
+            "success": 288, 
+            "total": 492
         }, 
         "rap": {
-            "Accuracy": 0.42857142857142855, 
-            "failure": 16, 
-            "success": 12, 
-            "total": 28
+            "Accuracy": 0.4684317718940937, 
+            "failure": 261, 
+            "misclassified_as": {
+                "classical": 9, 
+                "electronic": 160, 
+                "metal": 92
+            }, 
+            "success": 230, 
+            "total": 491
         }
     }, 
     "13_logarithmic_bins": {
         "classical": {
-            "Accuracy": 0.9655172413793104, 
-            "failure": 1, 
-            "success": 28, 
-            "total": 29
+            "Accuracy": 0.8865030674846626, 
+            "failure": 37, 
+            "misclassified_as": {
+                "electronic": 3, 
+                "metal": 33, 
+                "rap": 1
+            }, 
+            "success": 289, 
+            "total": 326
         }, 
-        "dubstep": {
-            "Accuracy": 0.6666666666666666, 
-            "failure": 10, 
-            "success": 20, 
-            "total": 30
+        "electronic": {
+            "Accuracy": 0.6584905660377358, 
+            "failure": 181, 
+            "misclassified_as": {
+                "classical": 13, 
+                "metal": 33, 
+                "rap": 135
+            }, 
+            "success": 349, 
+            "total": 530
         }, 
         "k-value": 13, 
         "metal": {
-            "Accuracy": 0.7333333333333333, 
-            "failure": 8, 
-            "success": 22, 
-            "total": 30
+            "Accuracy": 0.5833333333333334, 
+            "failure": 205, 
+            "misclassified_as": {
+                "classical": 108, 
+                "electronic": 18, 
+                "rap": 79
+            }, 
+            "success": 287, 
+            "total": 492
         }, 
         "rap": {
-            "Accuracy": 0.7142857142857143, 
-            "failure": 8, 
-            "success": 20, 
-            "total": 28
+            "Accuracy": 0.5661914460285132, 
+            "failure": 213, 
+            "misclassified_as": {
+                "classical": 1, 
+                "electronic": 120, 
+                "metal": 92
+            }, 
+            "success": 278, 
+            "total": 491
         }
     }, 
     "14_linear_bins": {
         "classical": {
-            "Accuracy": 1.0, 
-            "failure": 0, 
-            "success": 29, 
-            "total": 29
+            "Accuracy": 0.8987730061349694, 
+            "failure": 33, 
+            "misclassified_as": {
+                "electronic": 1, 
+                "metal": 31, 
+                "rap": 1
+            }, 
+            "success": 293, 
+            "total": 326
         }, 
-        "dubstep": {
-            "Accuracy": 0.6333333333333333, 
-            "failure": 11, 
-            "success": 19, 
-            "total": 30
+        "electronic": {
+            "Accuracy": 0.5981132075471698, 
+            "failure": 213, 
+            "misclassified_as": {
+                "classical": 16, 
+                "metal": 58, 
+                "rap": 139
+            }, 
+            "success": 317, 
+            "total": 530
         }, 
         "k-value": 14, 
         "metal": {
-            "Accuracy": 0.6, 
-            "failure": 12, 
-            "success": 18, 
-            "total": 30
+            "Accuracy": 0.5873983739837398, 
+            "failure": 203, 
+            "misclassified_as": {
+                "classical": 70, 
+                "electronic": 48, 
+                "rap": 85
+            }, 
+            "success": 289, 
+            "total": 492
         }, 
         "rap": {
-            "Accuracy": 0.5357142857142857, 
-            "failure": 13, 
-            "success": 15, 
-            "total": 28
+            "Accuracy": 0.48268839103869654, 
+            "failure": 254, 
+            "misclassified_as": {
+                "classical": 9, 
+                "electronic": 149, 
+                "metal": 96
+            }, 
+            "success": 237, 
+            "total": 491
         }
     }, 
     "14_logarithmic_bins": {
         "classical": {
-            "Accuracy": 0.9310344827586207, 
-            "failure": 2, 
-            "success": 27, 
-            "total": 29
+            "Accuracy": 0.8926380368098159, 
+            "failure": 35, 
+            "misclassified_as": {
+                "electronic": 2, 
+                "metal": 31, 
+                "rap": 2
+            }, 
+            "success": 291, 
+            "total": 326
         }, 
-        "dubstep": {
-            "Accuracy": 0.7, 
-            "failure": 9, 
-            "success": 21, 
-            "total": 30
+        "electronic": {
+            "Accuracy": 0.6641509433962264, 
+            "failure": 178, 
+            "misclassified_as": {
+                "classical": 13, 
+                "metal": 32, 
+                "rap": 133
+            }, 
+            "success": 352, 
+            "total": 530
         }, 
         "k-value": 14, 
         "metal": {
-            "Accuracy": 0.7333333333333333, 
-            "failure": 8, 
-            "success": 22, 
-            "total": 30
+            "Accuracy": 0.5813008130081301, 
+            "failure": 206, 
+            "misclassified_as": {
+                "classical": 108, 
+                "electronic": 20, 
+                "rap": 78
+            }, 
+            "success": 286, 
+            "total": 492
         }, 
         "rap": {
-            "Accuracy": 0.7142857142857143, 
-            "failure": 8, 
-            "success": 20, 
-            "total": 28
+            "Accuracy": 0.5682281059063137, 
+            "failure": 212, 
+            "misclassified_as": {
+                "classical": 1, 
+                "electronic": 122, 
+                "metal": 89
+            }, 
+            "success": 279, 
+            "total": 491
         }
     }, 
     "1_linear_bins": {
         "classical": {
-            "Accuracy": 0.9655172413793104, 
-            "failure": 1, 
-            "success": 28, 
-            "total": 29
+            "Accuracy": 0.8098159509202454, 
+            "failure": 62, 
+            "misclassified_as": {
+                "electronic": 3, 
+                "metal": 53, 
+                "rap": 6
+            }, 
+            "success": 264, 
+            "total": 326
         }, 
-        "dubstep": {
-            "Accuracy": 0.6333333333333333, 
-            "failure": 11, 
-            "success": 19, 
-            "total": 30
+        "electronic": {
+            "Accuracy": 0.6037735849056604, 
+            "failure": 210, 
+            "misclassified_as": {
+                "classical": 16, 
+                "metal": 59, 
+                "rap": 135
+            }, 
+            "success": 320, 
+            "total": 530
         }, 
         "k-value": 1, 
         "metal": {
-            "Accuracy": 0.5666666666666667, 
-            "failure": 13, 
-            "success": 17, 
-            "total": 30
+            "Accuracy": 0.5142276422764228, 
+            "failure": 239, 
+            "misclassified_as": {
+                "classical": 69, 
+                "electronic": 74, 
+                "rap": 96
+            }, 
+            "success": 253, 
+            "total": 492
         }, 
         "rap": {
-            "Accuracy": 0.35714285714285715, 
-            "failure": 18, 
-            "success": 10, 
-            "total": 28
+            "Accuracy": 0.41140529531568226, 
+            "failure": 289, 
+            "misclassified_as": {
+                "classical": 10, 
+                "electronic": 180, 
+                "metal": 99
+            }, 
+            "success": 202, 
+            "total": 491
         }
     }, 
     "1_logarithmic_bins": {
         "classical": {
-            "Accuracy": 0.9655172413793104, 
-            "failure": 1, 
-            "success": 28, 
-            "total": 29
+            "Accuracy": 0.7484662576687117, 
+            "failure": 82, 
+            "misclassified_as": {
+                "electronic": 6, 
+                "metal": 73, 
+                "rap": 3
+            }, 
+            "success": 244, 
+            "total": 326
         }, 
-        "dubstep": {
-            "Accuracy": 0.7, 
-            "failure": 9, 
-            "success": 21, 
-            "total": 30
+        "electronic": {
+            "Accuracy": 0.5962264150943396, 
+            "failure": 214, 
+            "misclassified_as": {
+                "classical": 12, 
+                "metal": 52, 
+                "rap": 150
+            }, 
+            "success": 316, 
+            "total": 530
         }, 
         "k-value": 1, 
         "metal": {
-            "Accuracy": 0.7666666666666667, 
-            "failure": 7, 
-            "success": 23, 
-            "total": 30
+            "Accuracy": 0.524390243902439, 
+            "failure": 234, 
+            "misclassified_as": {
+                "classical": 97, 
+                "electronic": 30, 
+                "rap": 107
+            }, 
+            "success": 258, 
+            "total": 492
         }, 
         "rap": {
-            "Accuracy": 0.6785714285714286, 
-            "failure": 9, 
-            "success": 19, 
-            "total": 28
+            "Accuracy": 0.5213849287169042, 
+            "failure": 235, 
+            "misclassified_as": {
+                "classical": 4, 
+                "electronic": 139, 
+                "metal": 92
+            }, 
+            "success": 256, 
+            "total": 491
         }
     }, 
     "2_linear_bins": {
         "classical": {
-            "Accuracy": 0.9655172413793104, 
-            "failure": 1, 
-            "success": 28, 
-            "total": 29
+            "Accuracy": 0.8098159509202454, 
+            "failure": 62, 
+            "misclassified_as": {
+                "electronic": 3, 
+                "metal": 53, 
+                "rap": 6
+            }, 
+            "success": 264, 
+            "total": 326
         }, 
-        "dubstep": {
-            "Accuracy": 0.7, 
-            "failure": 9, 
-            "success": 21, 
-            "total": 30
+        "electronic": {
+            "Accuracy": 0.6037735849056604, 
+            "failure": 210, 
+            "misclassified_as": {
+                "classical": 16, 
+                "metal": 59, 
+                "rap": 135
+            }, 
+            "success": 320, 
+            "total": 530
         }, 
         "k-value": 2, 
         "metal": {
-            "Accuracy": 0.6333333333333333, 
-            "failure": 11, 
-            "success": 19, 
-            "total": 30
+            "Accuracy": 0.5142276422764228, 
+            "failure": 239, 
+            "misclassified_as": {
+                "classical": 69, 
+                "electronic": 74, 
+                "rap": 96
+            }, 
+            "success": 253, 
+            "total": 492
         }, 
         "rap": {
-            "Accuracy": 0.35714285714285715, 
-            "failure": 18, 
-            "success": 10, 
-            "total": 28
+            "Accuracy": 0.41140529531568226, 
+            "failure": 289, 
+            "misclassified_as": {
+                "classical": 10, 
+                "electronic": 180, 
+                "metal": 99
+            }, 
+            "success": 202, 
+            "total": 491
         }
     }, 
     "2_logarithmic_bins": {
         "classical": {
-            "Accuracy": 0.9310344827586207, 
-            "failure": 2, 
-            "success": 27, 
-            "total": 29
+            "Accuracy": 0.7484662576687117, 
+            "failure": 82, 
+            "misclassified_as": {
+                "electronic": 6, 
+                "metal": 73, 
+                "rap": 3
+            }, 
+            "success": 244, 
+            "total": 326
         }, 
-        "dubstep": {
-            "Accuracy": 0.8333333333333334, 
-            "failure": 5, 
-            "success": 25, 
-            "total": 30
+        "electronic": {
+            "Accuracy": 0.5962264150943396, 
+            "failure": 214, 
+            "misclassified_as": {
+                "classical": 12, 
+                "metal": 52, 
+                "rap": 150
+            }, 
+            "success": 316, 
+            "total": 530
         }, 
         "k-value": 2, 
         "metal": {
-            "Accuracy": 0.8666666666666667, 
-            "failure": 4, 
-            "success": 26, 
-            "total": 30
+            "Accuracy": 0.524390243902439, 
+            "failure": 234, 
+            "misclassified_as": {
+                "classical": 97, 
+                "electronic": 30, 
+                "rap": 107
+            }, 
+            "success": 258, 
+            "total": 492
         }, 
         "rap": {
-            "Accuracy": 0.42857142857142855, 
-            "failure": 16, 
-            "success": 12, 
-            "total": 28
+            "Accuracy": 0.5213849287169042, 
+            "failure": 235, 
+            "misclassified_as": {
+                "classical": 4, 
+                "electronic": 139, 
+                "metal": 92
+            }, 
+            "success": 256, 
+            "total": 491
         }
     }, 
     "3_linear_bins": {
         "classical": {
-            "Accuracy": 0.9655172413793104, 
-            "failure": 1, 
-            "success": 28, 
-            "total": 29
+            "Accuracy": 0.8282208588957055, 
+            "failure": 56, 
+            "misclassified_as": {
+                "electronic": 3, 
+                "metal": 48, 
+                "rap": 5
+            }, 
+            "success": 270, 
+            "total": 326
         }, 
-        "dubstep": {
-            "Accuracy": 0.6, 
-            "failure": 12, 
-            "success": 18, 
-            "total": 30
+        "electronic": {
+            "Accuracy": 0.6358490566037736, 
+            "failure": 193, 
+            "misclassified_as": {
+                "classical": 15, 
+                "metal": 57, 
+                "rap": 121
+            }, 
+            "success": 337, 
+            "total": 530
         }, 
         "k-value": 3, 
         "metal": {
-            "Accuracy": 0.6, 
-            "failure": 12, 
-            "success": 18, 
-            "total": 30
+            "Accuracy": 0.5386178861788617, 
+            "failure": 227, 
+            "misclassified_as": {
+                "classical": 68, 
+                "electronic": 65, 
+                "rap": 94
+            }, 
+            "success": 265, 
+            "total": 492
         }, 
         "rap": {
-            "Accuracy": 0.5, 
-            "failure": 14, 
-            "success": 14, 
-            "total": 28
+            "Accuracy": 0.4317718940936864, 
+            "failure": 279, 
+            "misclassified_as": {
+                "classical": 11, 
+                "electronic": 168, 
+                "metal": 100
+            }, 
+            "success": 212, 
+            "total": 491
         }
     }, 
     "3_logarithmic_bins": {
         "classical": {
-            "Accuracy": 0.9655172413793104, 
-            "failure": 1, 
-            "success": 28, 
-            "total": 29
+            "Accuracy": 0.8282208588957055, 
+            "failure": 56, 
+            "misclassified_as": {
+                "electronic": 1, 
+                "metal": 52, 
+                "rap": 3
+            }, 
+            "success": 270, 
+            "total": 326
         }, 
-        "dubstep": {
-            "Accuracy": 0.5333333333333333, 
-            "failure": 14, 
-            "success": 16, 
-            "total": 30
+        "electronic": {
+            "Accuracy": 0.6264150943396226, 
+            "failure": 198, 
+            "misclassified_as": {
+                "classical": 12, 
+                "metal": 43, 
+                "rap": 143
+            }, 
+            "success": 332, 
+            "total": 530
         }, 
         "k-value": 3, 
         "metal": {
-            "Accuracy": 0.7333333333333333, 
-            "failure": 8, 
-            "success": 22, 
-            "total": 30
+            "Accuracy": 0.5386178861788617, 
+            "failure": 227, 
+            "misclassified_as": {
+                "classical": 96, 
+                "electronic": 26, 
+                "rap": 105
+            }, 
+            "success": 265, 
+            "total": 492
         }, 
         "rap": {
-            "Accuracy": 0.6785714285714286, 
-            "failure": 9, 
-            "success": 19, 
-            "total": 28
+            "Accuracy": 0.5376782077393075, 
+            "failure": 227, 
+            "misclassified_as": {
+                "classical": 2, 
+                "electronic": 133, 
+                "metal": 92
+            }, 
+            "success": 264, 
+            "total": 491
         }
     }, 
     "4_linear_bins": {
         "classical": {
-            "Accuracy": 0.9655172413793104, 
-            "failure": 1, 
-            "success": 28, 
-            "total": 29
+            "Accuracy": 0.8404907975460123, 
+            "failure": 52, 
+            "misclassified_as": {
+                "electronic": 3, 
+                "metal": 47, 
+                "rap": 2
+            }, 
+            "success": 274, 
+            "total": 326
         }, 
-        "dubstep": {
-            "Accuracy": 0.7, 
-            "failure": 9, 
-            "success": 21, 
-            "total": 30
+        "electronic": {
+            "Accuracy": 0.6245283018867924, 
+            "failure": 199, 
+            "misclassified_as": {
+                "classical": 14, 
+                "metal": 52, 
+                "rap": 133
+            }, 
+            "success": 331, 
+            "total": 530
         }, 
         "k-value": 4, 
         "metal": {
-            "Accuracy": 0.6, 
-            "failure": 12, 
-            "success": 18, 
-            "total": 30
+            "Accuracy": 0.5447154471544715, 
+            "failure": 224, 
+            "misclassified_as": {
+                "classical": 72, 
+                "electronic": 63, 
+                "rap": 89
+            }, 
+            "success": 268, 
+            "total": 492
         }, 
         "rap": {
-            "Accuracy": 0.42857142857142855, 
-            "failure": 16, 
-            "success": 12, 
-            "total": 28
+            "Accuracy": 0.439918533604888, 
+            "failure": 275, 
+            "misclassified_as": {
+                "classical": 8, 
+                "electronic": 170, 
+                "metal": 97
+            }, 
+            "success": 216, 
+            "total": 491
         }
     }, 
     "4_logarithmic_bins": {
         "classical": {
-            "Accuracy": 0.9310344827586207, 
-            "failure": 2, 
-            "success": 27, 
-            "total": 29
+            "Accuracy": 0.8251533742331288, 
+            "failure": 57, 
+            "misclassified_as": {
+                "electronic": 1, 
+                "metal": 54, 
+                "rap": 2
+            }, 
+            "success": 269, 
+            "total": 326
         }, 
-        "dubstep": {
-            "Accuracy": 0.6666666666666666, 
-            "failure": 10, 
-            "success": 20, 
-            "total": 30
+        "electronic": {
+            "Accuracy": 0.6452830188679245, 
+            "failure": 188, 
+            "misclassified_as": {
+                "classical": 12, 
+                "metal": 41, 
+                "rap": 135
+            }, 
+            "success": 342, 
+            "total": 530
         }, 
         "k-value": 4, 
         "metal": {
-            "Accuracy": 0.7666666666666667, 
-            "failure": 7, 
-            "success": 23, 
-            "total": 30
+            "Accuracy": 0.5345528455284553, 
+            "failure": 229, 
+            "misclassified_as": {
+                "classical": 94, 
+                "electronic": 26, 
+                "rap": 109
+            }, 
+            "success": 263, 
+            "total": 492
         }, 
         "rap": {
-            "Accuracy": 0.6428571428571429, 
-            "failure": 10, 
-            "success": 18, 
-            "total": 28
+            "Accuracy": 0.5458248472505092, 
+            "failure": 223, 
+            "misclassified_as": {
+                "classical": 2, 
+                "electronic": 131, 
+                "metal": 90
+            }, 
+            "success": 268, 
+            "total": 491
         }
     }, 
     "5_linear_bins": {
         "classical": {
-            "Accuracy": 0.9655172413793104, 
-            "failure": 1, 
-            "success": 28, 
-            "total": 29
+            "Accuracy": 0.8619631901840491, 
+            "failure": 45, 
+            "misclassified_as": {
+                "electronic": 1, 
+                "metal": 43, 
+                "rap": 1
+            }, 
+            "success": 281, 
+            "total": 326
         }, 
-        "dubstep": {
-            "Accuracy": 0.6, 
-            "failure": 12, 
-            "success": 18, 
-            "total": 30
+        "electronic": {
+            "Accuracy": 0.6245283018867924, 
+            "failure": 199, 
+            "misclassified_as": {
+                "classical": 18, 
+                "metal": 55, 
+                "rap": 126
+            }, 
+            "success": 331, 
+            "total": 530
         }, 
         "k-value": 5, 
         "metal": {
-            "Accuracy": 0.6, 
-            "failure": 12, 
-            "success": 18, 
-            "total": 30
+            "Accuracy": 0.5670731707317073, 
+            "failure": 213, 
+            "misclassified_as": {
+                "classical": 68, 
+                "electronic": 57, 
+                "rap": 88
+            }, 
+            "success": 279, 
+            "total": 492
         }, 
         "rap": {
-            "Accuracy": 0.5357142857142857, 
-            "failure": 13, 
-            "success": 15, 
-            "total": 28
+            "Accuracy": 0.4480651731160896, 
+            "failure": 271, 
+            "misclassified_as": {
+                "classical": 10, 
+                "electronic": 164, 
+                "metal": 97
+            }, 
+            "success": 220, 
+            "total": 491
         }
     }, 
     "5_logarithmic_bins": {
         "classical": {
-            "Accuracy": 0.9310344827586207, 
-            "failure": 2, 
-            "success": 27, 
-            "total": 29
+            "Accuracy": 0.8404907975460123, 
+            "failure": 52, 
+            "misclassified_as": {
+                "electronic": 1, 
+                "metal": 49, 
+                "rap": 2
+            }, 
+            "success": 274, 
+            "total": 326
         }, 
-        "dubstep": {
-            "Accuracy": 0.6333333333333333, 
-            "failure": 11, 
-            "success": 19, 
-            "total": 30
+        "electronic": {
+            "Accuracy": 0.6509433962264151, 
+            "failure": 185, 
+            "misclassified_as": {
+                "classical": 13, 
+                "metal": 37, 
+                "rap": 135
+            }, 
+            "success": 345, 
+            "total": 530
         }, 
         "k-value": 5, 
         "metal": {
-            "Accuracy": 0.7333333333333333, 
-            "failure": 8, 
-            "success": 22, 
-            "total": 30
+            "Accuracy": 0.5508130081300813, 
+            "failure": 221, 
+            "misclassified_as": {
+                "classical": 96, 
+                "electronic": 23, 
+                "rap": 102
+            }, 
+            "success": 271, 
+            "total": 492
         }, 
         "rap": {
-            "Accuracy": 0.7857142857142857, 
-            "failure": 6, 
-            "success": 22, 
-            "total": 28
+            "Accuracy": 0.5437881873727087, 
+            "failure": 224, 
+            "misclassified_as": {
+                "classical": 2, 
+                "electronic": 132, 
+                "metal": 90
+            }, 
+            "success": 267, 
+            "total": 491
         }
     }, 
     "6_linear_bins": {
         "classical": {
-            "Accuracy": 1.0, 
-            "failure": 0, 
-            "success": 29, 
-            "total": 29
+            "Accuracy": 0.8680981595092024, 
+            "failure": 43, 
+            "misclassified_as": {
+                "electronic": 2, 
+                "metal": 41
+            }, 
+            "success": 283, 
+            "total": 326
         }, 
-        "dubstep": {
-            "Accuracy": 0.6333333333333333, 
-            "failure": 11, 
-            "success": 19, 
-            "total": 30
+        "electronic": {
+            "Accuracy": 0.6245283018867924, 
+            "failure": 199, 
+            "misclassified_as": {
+                "classical": 16, 
+                "metal": 53, 
+                "rap": 130
+            }, 
+            "success": 331, 
+            "total": 530
         }, 
         "k-value": 6, 
         "metal": {
-            "Accuracy": 0.5666666666666667, 
-            "failure": 13, 
-            "success": 17, 
-            "total": 30
+            "Accuracy": 0.5589430894308943, 
+            "failure": 217, 
+            "misclassified_as": {
+                "classical": 72, 
+                "electronic": 62, 
+                "rap": 83
+            }, 
+            "success": 275, 
+            "total": 492
         }, 
         "rap": {
-            "Accuracy": 0.5, 
-            "failure": 14, 
-            "success": 14, 
-            "total": 28
+            "Accuracy": 0.4317718940936864, 
+            "failure": 279, 
+            "misclassified_as": {
+                "classical": 8, 
+                "electronic": 166, 
+                "metal": 105
+            }, 
+            "success": 212, 
+            "total": 491
         }
     }, 
     "6_logarithmic_bins": {
         "classical": {
-            "Accuracy": 0.9310344827586207, 
-            "failure": 2, 
-            "success": 27, 
-            "total": 29
+            "Accuracy": 0.8466257668711656, 
+            "failure": 50, 
+            "misclassified_as": {
+                "electronic": 1, 
+                "metal": 47, 
+                "rap": 2
+            }, 
+            "success": 276, 
+            "total": 326
         }, 
-        "dubstep": {
-            "Accuracy": 0.6666666666666666, 
-            "failure": 10, 
-            "success": 20, 
-            "total": 30
+        "electronic": {
+            "Accuracy": 0.6509433962264151, 
+            "failure": 185, 
+            "misclassified_as": {
+                "classical": 12, 
+                "metal": 41, 
+                "rap": 132
+            }, 
+            "success": 345, 
+            "total": 530
         }, 
         "k-value": 6, 
         "metal": {
-            "Accuracy": 0.7333333333333333, 
-            "failure": 8, 
-            "success": 22, 
-            "total": 30
+            "Accuracy": 0.5650406504065041, 
+            "failure": 214, 
+            "misclassified_as": {
+                "classical": 98, 
+                "electronic": 22, 
+                "rap": 94
+            }, 
+            "success": 278, 
+            "total": 492
         }, 
         "rap": {
-            "Accuracy": 0.6428571428571429, 
-            "failure": 10, 
-            "success": 18, 
-            "total": 28
+            "Accuracy": 0.5580448065173116, 
+            "failure": 217, 
+            "misclassified_as": {
+                "classical": 2, 
+                "electronic": 133, 
+                "metal": 82
+            }, 
+            "success": 274, 
+            "total": 491
         }
     }, 
     "7_linear_bins": {
         "classical": {
-            "Accuracy": 1.0, 
-            "failure": 0, 
-            "success": 29, 
-            "total": 29
+            "Accuracy": 0.8865030674846626, 
+            "failure": 37, 
+            "misclassified_as": {
+                "electronic": 2, 
+                "metal": 35
+            }, 
+            "success": 289, 
+            "total": 326
         }, 
-        "dubstep": {
-            "Accuracy": 0.5666666666666667, 
-            "failure": 13, 
-            "success": 17, 
-            "total": 30
+        "electronic": {
+            "Accuracy": 0.6132075471698113, 
+            "failure": 205, 
+            "misclassified_as": {
+                "classical": 16, 
+                "metal": 59, 
+                "rap": 130
+            }, 
+            "success": 325, 
+            "total": 530
         }, 
         "k-value": 7, 
         "metal": {
-            "Accuracy": 0.5333333333333333, 
-            "failure": 14, 
-            "success": 16, 
-            "total": 30
+            "Accuracy": 0.5691056910569106, 
+            "failure": 212, 
+            "misclassified_as": {
+                "classical": 74, 
+                "electronic": 53, 
+                "rap": 85
+            }, 
+            "success": 280, 
+            "total": 492
         }, 
         "rap": {
-            "Accuracy": 0.6071428571428571, 
-            "failure": 11, 
-            "success": 17, 
-            "total": 28
+            "Accuracy": 0.439918533604888, 
+            "failure": 275, 
+            "misclassified_as": {
+                "classical": 9, 
+                "electronic": 164, 
+                "metal": 102
+            }, 
+            "success": 216, 
+            "total": 491
         }
     }, 
     "7_logarithmic_bins": {
         "classical": {
-            "Accuracy": 0.9655172413793104, 
-            "failure": 1, 
-            "success": 28, 
-            "total": 29
+            "Accuracy": 0.8496932515337423, 
+            "failure": 49, 
+            "misclassified_as": {
+                "electronic": 2, 
+                "metal": 45, 
+                "rap": 2
+            }, 
+            "success": 277, 
+            "total": 326
         }, 
-        "dubstep": {
-            "Accuracy": 0.6, 
-            "failure": 12, 
-            "success": 18, 
-            "total": 30
+        "electronic": {
+            "Accuracy": 0.6584905660377358, 
+            "failure": 181, 
+            "misclassified_as": {
+                "classical": 13, 
+                "metal": 36, 
+                "rap": 132
+            }, 
+            "success": 349, 
+            "total": 530
         }, 
         "k-value": 7, 
         "metal": {
-            "Accuracy": 0.7333333333333333, 
-            "failure": 8, 
-            "success": 22, 
-            "total": 30
+            "Accuracy": 0.5670731707317073, 
+            "failure": 213, 
+            "misclassified_as": {
+                "classical": 97, 
+                "electronic": 17, 
+                "rap": 99
+            }, 
+            "success": 279, 
+            "total": 492
         }, 
         "rap": {
-            "Accuracy": 0.75, 
-            "failure": 7, 
-            "success": 21, 
-            "total": 28
+            "Accuracy": 0.5539714867617108, 
+            "failure": 219, 
+            "misclassified_as": {
+                "classical": 2, 
+                "electronic": 131, 
+                "metal": 86
+            }, 
+            "success": 272, 
+            "total": 491
         }
     }, 
     "8_linear_bins": {
         "classical": {
-            "Accuracy": 1.0, 
-            "failure": 0, 
-            "success": 29, 
-            "total": 29
+            "Accuracy": 0.8926380368098159, 
+            "failure": 35, 
+            "misclassified_as": {
+                "electronic": 1, 
+                "metal": 33, 
+                "rap": 1
+            }, 
+            "success": 291, 
+            "total": 326
         }, 
-        "dubstep": {
-            "Accuracy": 0.6, 
-            "failure": 12, 
-            "success": 18, 
-            "total": 30
+        "electronic": {
+            "Accuracy": 0.6132075471698113, 
+            "failure": 205, 
+            "misclassified_as": {
+                "classical": 16, 
+                "metal": 57, 
+                "rap": 132
+            }, 
+            "success": 325, 
+            "total": 530
         }, 
         "k-value": 8, 
         "metal": {
-            "Accuracy": 0.5333333333333333, 
-            "failure": 14, 
-            "success": 16, 
-            "total": 30
+            "Accuracy": 0.5711382113821138, 
+            "failure": 211, 
+            "misclassified_as": {
+                "classical": 73, 
+                "electronic": 50, 
+                "rap": 88
+            }, 
+            "success": 281, 
+            "total": 492
         }, 
         "rap": {
-            "Accuracy": 0.5714285714285714, 
-            "failure": 12, 
-            "success": 16, 
-            "total": 28
+            "Accuracy": 0.4439918533604888, 
+            "failure": 273, 
+            "misclassified_as": {
+                "classical": 10, 
+                "electronic": 161, 
+                "metal": 102
+            }, 
+            "success": 218, 
+            "total": 491
         }
     }, 
     "8_logarithmic_bins": {
         "classical": {
-            "Accuracy": 0.9310344827586207, 
-            "failure": 2, 
-            "success": 27, 
-            "total": 29
+            "Accuracy": 0.8558282208588958, 
+            "failure": 47, 
+            "misclassified_as": {
+                "electronic": 3, 
+                "metal": 43, 
+                "rap": 1
+            }, 
+            "success": 279, 
+            "total": 326
         }, 
-        "dubstep": {
-            "Accuracy": 0.6666666666666666, 
-            "failure": 10, 
-            "success": 20, 
-            "total": 30
+        "electronic": {
+            "Accuracy": 0.660377358490566, 
+            "failure": 180, 
+            "misclassified_as": {
+                "classical": 13, 
+                "metal": 37, 
+                "rap": 130
+            }, 
+            "success": 350, 
+            "total": 530
         }, 
         "k-value": 8, 
         "metal": {
-            "Accuracy": 0.7333333333333333, 
-            "failure": 8, 
-            "success": 22, 
-            "total": 30
+            "Accuracy": 0.5609756097560976, 
+            "failure": 216, 
+            "misclassified_as": {
+                "classical": 99, 
+                "electronic": 23, 
+                "rap": 94
+            }, 
+            "success": 276, 
+            "total": 492
         }, 
         "rap": {
-            "Accuracy": 0.5714285714285714, 
-            "failure": 12, 
-            "success": 16, 
-            "total": 28
+            "Accuracy": 0.5580448065173116, 
+            "failure": 217, 
+            "misclassified_as": {
+                "classical": 2, 
+                "electronic": 129, 
+                "metal": 86
+            }, 
+            "success": 274, 
+            "total": 491
         }
     }, 
     "9_linear_bins": {
         "classical": {
-            "Accuracy": 1.0, 
-            "failure": 0, 
-            "success": 29, 
-            "total": 29
+            "Accuracy": 0.8957055214723927, 
+            "failure": 34, 
+            "misclassified_as": {
+                "electronic": 1, 
+                "metal": 32, 
+                "rap": 1
+            }, 
+            "success": 292, 
+            "total": 326
         }, 
-        "dubstep": {
-            "Accuracy": 0.5666666666666667, 
-            "failure": 13, 
-            "success": 17, 
-            "total": 30
+        "electronic": {
+            "Accuracy": 0.6056603773584905, 
+            "failure": 209, 
+            "misclassified_as": {
+                "classical": 17, 
+                "metal": 60, 
+                "rap": 132
+            }, 
+            "success": 321, 
+            "total": 530
         }, 
         "k-value": 9, 
         "metal": {
-            "Accuracy": 0.5666666666666667, 
-            "failure": 13, 
-            "success": 17, 
-            "total": 30
+            "Accuracy": 0.5813008130081301, 
+            "failure": 206, 
+            "misclassified_as": {
+                "classical": 70, 
+                "electronic": 52, 
+                "rap": 84
+            }, 
+            "success": 286, 
+            "total": 492
         }, 
         "rap": {
-            "Accuracy": 0.6785714285714286, 
-            "failure": 9, 
-            "success": 19, 
-            "total": 28
+            "Accuracy": 0.4623217922606925, 
+            "failure": 264, 
+            "misclassified_as": {
+                "classical": 10, 
+                "electronic": 159, 
+                "metal": 95
+            }, 
+            "success": 227, 
+            "total": 491
         }
     }, 
     "9_logarithmic_bins": {
         "classical": {
-            "Accuracy": 0.9655172413793104, 
-            "failure": 1, 
-            "success": 28, 
-            "total": 29
+            "Accuracy": 0.8711656441717791, 
+            "failure": 42, 
+            "misclassified_as": {
+                "electronic": 2, 
+                "metal": 38, 
+                "rap": 2
+            }, 
+            "success": 284, 
+            "total": 326
         }, 
-        "dubstep": {
-            "Accuracy": 0.6, 
-            "failure": 12, 
-            "success": 18, 
-            "total": 30
+        "electronic": {
+            "Accuracy": 0.6584905660377358, 
+            "failure": 181, 
+            "misclassified_as": {
+                "classical": 12, 
+                "metal": 38, 
+                "rap": 131
+            }, 
+            "success": 349, 
+            "total": 530
         }, 
         "k-value": 9, 
         "metal": {
-            "Accuracy": 0.7666666666666667, 
-            "failure": 7, 
-            "success": 23, 
-            "total": 30
+            "Accuracy": 0.5630081300813008, 
+            "failure": 215, 
+            "misclassified_as": {
+                "classical": 102, 
+                "electronic": 20, 
+                "rap": 93
+            }, 
+            "success": 277, 
+            "total": 492
         }, 
         "rap": {
-            "Accuracy": 0.6071428571428571, 
-            "failure": 11, 
-            "success": 17, 
-            "total": 28
+            "Accuracy": 0.5539714867617108, 
+            "failure": 219, 
+            "misclassified_as": {
+                "classical": 1, 
+                "electronic": 133, 
+                "metal": 85
+            }, 
+            "success": 272, 
+            "total": 491
         }
     }
 }
