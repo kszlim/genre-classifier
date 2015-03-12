@@ -14,8 +14,8 @@ class NumpyAwareJSONEncoder(json.JSONEncoder):
         return json.JSONEncoder.default(self, obj)
 
 
-directories = ['/home/kszlim/music/classical/', '/home/kszlim/music/rap/', '/home/kszlim/music/metal/', '/home/kszlim/music/dubstep/']
-genres = ['rap', 'classical', 'metal', 'dubstep']
+directories = ['/home/kszlim/music/classical/', '/home/kszlim/music/rap/', '/home/kszlim/music/metal/', '/home/kszlim/music/electronic/']
+genres = ['rap', 'classical', 'metal', 'electronic']
 # directories = ['/home/kszlim/music/classical/', '/home/kszlim/music/pop/', '/home/kszlim/music/rap/', '/home/kszlim/music/metal/']
 # genres = ['rap', 'classical', 'metal', 'pop']
 #training_data = ['logarithmic_bins_training_data.json', 'linear_bins_training_data.json']
@@ -56,8 +56,11 @@ def create_json_dump(output_path='./data.json', pretty=False):
 		data[genre] = {}
 		for index, filepath in enumerate(filepaths):
 			print 'Done: ' + str(index)
-			fft_data, sample_rate, bins = get_fft(filepath)
-			data[genre][os.path.basename(filepath)] = {'raw_fft_data': fft_data, 'sample_rate': sample_rate, 'bins': bins}
+			try:
+				fft_data, sample_rate, bins = get_fft(filepath)
+				data[genre][os.path.basename(filepath)] = {'raw_fft_data': fft_data, 'sample_rate': sample_rate, 'bins': bins}
+			except:
+				continue
 	with open(output_path, 'w') as outfile:
 		if pretty:
 			json.dump(data, outfile, cls=NumpyAwareJSONEncoder, indent=4, sort_keys=True)
@@ -127,12 +130,10 @@ def generate_bins(bin_type = linear_bins, fft_data=load_json_dump(), output_path
 		number_songs = len(songs)
 		print number_songs, genre, len(fft_data[genre])
 		for index, song in enumerate(songs):
-			if index < number_songs * 0.7: 
+			if index % 4 == 0: 
 				training_data.append(generate_bin_from_song(bin_type, genre, song))
 			else:
 				test_data.append(generate_bin_from_song(bin_type, genre, song))
-
-
 
 	dump_data(training_data)
 	dump_data(test_data, 'test_data.json')
@@ -200,17 +201,20 @@ def test_results():
 	with open('results.json', 'w') as outfile:
 		json.dump(results, outfile, indent=4, sort_keys=True)
 
-# print classify('./test.mp3')
+create_json_dump()
+generate_bins()
+generate_bins(logarithmic_bins)
+test_results()
 
-test_dir = '/home/kszlim/Projects/genre-classifier/test_data2/'
-test_files = get_filepaths(test_dir)[1]
-count = Counter()
-for test_file in test_files:
-	try:
-		genre, results = classify(test_file)
-		count[genre] += 1
-	except:
-		pass		
+# test_dir = '/home/kszlim/Projects/genre-classifier/test_data2/'
+# test_files = get_filepaths(test_dir)[1]
+# count = Counter()
+# for test_file in test_files:
+# 	try:
+# 		genre, results = classify(test_file)
+# 		count[genre] += 1
+# 	except:
+# 		pass		
 
-print count
+# print count
 #test_results()
