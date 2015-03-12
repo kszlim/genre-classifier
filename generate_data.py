@@ -4,6 +4,7 @@ import json
 import glob
 import os
 import matplotlib.pyplot as plt
+from collections import Counter
 
 
 class NumpyAwareJSONEncoder(json.JSONEncoder):
@@ -12,9 +13,12 @@ class NumpyAwareJSONEncoder(json.JSONEncoder):
             return obj.tolist()
         return json.JSONEncoder.default(self, obj)
 
-directories = ['/home/kszlim/music/classical/', '/home/kszlim/music/pop/', '/home/kszlim/music/rap/', '/home/kszlim/music/metal/']
-genres = ['rap', 'classical', 'metal', 'pop']
-training_data = ['logarithmic_bins_training_data.json', 'linear_bins_training_data.json']
+
+directories = ['/home/kszlim/music/classical/', '/home/kszlim/music/rap/', '/home/kszlim/music/metal/', '/home/kszlim/music/dubstep/']
+genres = ['rap', 'classical', 'metal', 'dubstep']
+# directories = ['/home/kszlim/music/classical/', '/home/kszlim/music/pop/', '/home/kszlim/music/rap/', '/home/kszlim/music/metal/']
+# genres = ['rap', 'classical', 'metal', 'pop']
+#training_data = ['logarithmic_bins_training_data.json', 'linear_bins_training_data.json']
 
 
 def squared_euclidean(arr1, arr2):
@@ -24,7 +28,7 @@ def squared_euclidean(arr1, arr2):
 	return distance_squared
 
 def get_filepaths(base_directory):
-	return (base_directory.split('/')[-2], glob.glob(base_directory + '*.mp3'))
+	return (base_directory.split('/')[-2], glob.glob(base_directory + '*.mp3') + glob.glob(base_directory + '*.m4a'))
 
 def extract_samples(filepath, offset=60):
 	data, sample_rate = librosa.load(filepath, sr=32000, offset=offset, duration=60.0)
@@ -108,21 +112,105 @@ def generate_bin_from_song(binning_function, genre, song):
 	return {'binning_type': binning_function.__name__, 'genre': genre, 'binned_data': binned_fft}
 
 def generate_bins(bin_type = linear_bins, fft_data=load_json_dump(), output_path='training_data.json', pretty=False):
+	
+	def dump_data(data, output_path=output_path):
+		with open(bin_type.__name__ + '_' + output_path, 'w') as outfile:
+			if pretty:
+				json.dump(data, outfile, indent=4, sort_keys=True)
+			else:
+				json.dump(data, outfile)	
+
 	training_data = []
+	test_data = []
 	for genre in genres:
 		songs = fft_data[genre].values()
-		for song in songs:
-			training_data.append(generate_bin_from_song(bin_type, genre, song))
-	with open(bin_type.__name__ + '_' + output_path, 'w') as outfile:
-		if pretty:
-			json.dump(training_data, outfile, indent=4, sort_keys=True)
-		else:
-			json.dump(training_data, outfile)
+		number_songs = len(songs)
+		print number_songs, genre, len(fft_data[genre])
+		for index, song in enumerate(songs):
+			if index < number_songs * 0.7: 
+				training_data.append(generate_bin_from_song(bin_type, genre, song))
+			else:
+				test_data.append(generate_bin_from_song(bin_type, genre, song))
 
-def knn(input_data, training_data, k=8):
+
+
+	dump_data(training_data)
+	dump_data(test_data, 'test_data.json')
+	
+
+def knn(input_data, training_data, k=11):
 	knn_results = []
 	for training_value in training_data:
 		knn_results.append({'euclidean': squared_euclidean(input_data, training_value['binned_data']), 'genre': training_value['genre']})
-	return sorted(knn_results, key=lambda x: x['euclidean'])
+	return sorted(knn_results, key=lambda x: x['euclidean'])[:k:]
 
-print knn([2382.453334917241, 3599.1248324878507, 1829.2239806627595, 917.0517919308832, 597.0348491196959, 323.5105878553046, 237.94912376910642, 113.65149925716085], load_json_dump('logarithmic_bins_training_data.json'))[:8:]
+def cross_validate(bin_types=['logarithmic_bins', 'linear_bins']):
+
+	def create_counter():
+		return {genre: {'success': 0, 'failure': 0, 'total': 0} for genre in genres}
+
+	final_results = {}
+
+	for bin_type in bin_types:
+		test_data = load_json_dump(bin_type +  '_test_data.json')
+		training_data = load_json_dump(bin_type + '_training_data.json')
+
+		for k in range(1, 15):
+			results = create_counter()
+			results['k-value'] = k
+			for test_value in test_data:
+				count = Counter()
+				knn_output = knn(test_value['binned_data'], training_data, k)
+				result_genre = test_value['genre']
+				for result in knn_output:
+					count[result['genre']] += 1
+				if count.most_common(1)[0][0] == result_genre:
+					results[result_genre]['success'] += 1
+					results[result_genre]['total'] += 1
+				else:
+					results[result_genre]['total'] += 1
+					results[result_genre]['failure'] += 1
+			for genre in genres:
+				results[genre]['Accuracy'] = float(results[genre]['success'])/results[genre]['total']
+		
+			final_results[str(k) + '_' + bin_type] = results
+	return final_results
+
+def classify(path, binning_function=logarithmic_bins):
+	results = knn(normalize(binning_function(get_fft(path, window_length=1024)[0])), load_json_dump('logarithmic_bins_training_data.json'))
+	count = Counter()
+	for result in results:
+		count[result['genre']] += 1
+	return count.most_common(1)[0][0], results
+
+def test_results():
+	results = cross_validate()
+
+	summarized_results = []
+
+	for k, result in results.iteritems():
+		counter = Counter()
+		for genre in genres:
+			counter['success'] += result[genre]['success']
+			counter['total'] += result[genre]['total']
+		summarized_results.append((k, float(counter['success'])/counter['total']))
+
+	print sorted(summarized_results, key=lambda x: x[1])
+
+	with open('results.json', 'w') as outfile:
+		json.dump(results, outfile, indent=4, sort_keys=True)
+
+# print classify('./test.mp3')
+
+test_dir = '/home/kszlim/Projects/genre-classifier/test_data2/'
+test_files = get_filepaths(test_dir)[1]
+count = Counter()
+for test_file in test_files:
+	try:
+		genre, results = classify(test_file)
+		count[genre] += 1
+	except:
+		pass		
+
+print count
+#test_results()

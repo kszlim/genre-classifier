@@ -1,2 +1,5 @@
-*.json
+data.json
+old.json
+*.mp3
+test_data2/
 *.pyc
