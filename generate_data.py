@@ -28,7 +28,7 @@ def squared_euclidean(arr1, arr2):
 	return distance_squared
 
 def get_filepaths(base_directory):
-	return (base_directory.split('/')[-2], glob.glob(base_directory + '*.mp3') + glob.glob(base_directory + '*.m4a'))
+	return (base_directory.split('/')[-2], glob.glob(base_directory + '*.mp3') + glob.glob(base_directory + '*.m4a') + glob.glob(base_directory + '*.flac'))
 
 def extract_samples(filepath, offset=60):
 	data, sample_rate = librosa.load(filepath, sr=32000, offset=offset, duration=60.0)
@@ -130,7 +130,7 @@ def generate_bins(bin_type = linear_bins, fft_data=load_json_dump(), output_path
 		number_songs = len(songs)
 		print number_songs, genre, len(fft_data[genre])
 		for index, song in enumerate(songs):
-			if index % 4 == 0: 
+			if index % 6 == 0: 
 				training_data.append(generate_bin_from_song(bin_type, genre, song))
 			else:
 				test_data.append(generate_bin_from_song(bin_type, genre, song))
@@ -152,6 +152,8 @@ def cross_validate(bin_types=['logarithmic_bins', 'linear_bins']):
 
 	final_results = {}
 
+	all_tests = []
+
 	for bin_type in bin_types:
 		test_data = load_json_dump(bin_type +  '_test_data.json')
 		training_data = load_json_dump(bin_type + '_training_data.json')
@@ -159,33 +161,48 @@ def cross_validate(bin_types=['logarithmic_bins', 'linear_bins']):
 		for k in range(1, 15):
 			results = create_counter()
 			results['k-value'] = k
+
+			for genre in genres:
+				results[genre]['misclassified_as'] = Counter()
+
 			for test_value in test_data:
 				count = Counter()
 				knn_output = knn(test_value['binned_data'], training_data, k)
 				result_genre = test_value['genre']
+				
 				for result in knn_output:
 					count[result['genre']] += 1
-				if count.most_common(1)[0][0] == result_genre:
+
+				
+				guessed_genre = count.most_common(1)[0][0]
+				test_cases = (k, ('actual genre', result_genre), ('guessed_genre', guessed_genre), count.most_common(), knn_output)
+				all_tests.append(test_cases)
+
+				if guessed_genre == result_genre:
 					results[result_genre]['success'] += 1
 					results[result_genre]['total'] += 1
 				else:
 					results[result_genre]['total'] += 1
 					results[result_genre]['failure'] += 1
+					results[result_genre]['misclassified_as'][guessed_genre] += 1
 			for genre in genres:
 				results[genre]['Accuracy'] = float(results[genre]['success'])/results[genre]['total']
-		
+			
+			for genre in genres:
+				results[genre]['misclassified_as'] = {k: v for k, v in results[genre]['misclassified_as'].iteritems()}
+
 			final_results[str(k) + '_' + bin_type] = results
-	return final_results
+	return final_results, all_tests
 
 def classify(path, binning_function=logarithmic_bins):
-	results = knn(normalize(binning_function(get_fft(path, window_length=1024)[0])), load_json_dump('logarithmic_bins_training_data.json'))
+	results = knn(normalize(binning_function(get_fft(path, window_length=1024)[0])), load_json_dump('logarithmic_bins_training_data.json'), k=9)
 	count = Counter()
 	for result in results:
 		count[result['genre']] += 1
 	return count.most_common(1)[0][0], results
 
 def test_results():
-	results = cross_validate()
+	results, all_tests = cross_validate()
 
 	summarized_results = []
 
@@ -201,12 +218,15 @@ def test_results():
 	with open('results.json', 'w') as outfile:
 		json.dump(results, outfile, indent=4, sort_keys=True)
 
-create_json_dump()
-generate_bins()
-generate_bins(logarithmic_bins)
+	with open('all_tests.txt', 'w') as outfile:
+		outfile.writelines([str(test) for test in all_tests])
+
+#create_json_dump()
+# generate_bins()
+# generate_bins(logarithmic_bins)
 test_results()
 
-# test_dir = '/home/kszlim/Projects/genre-classifier/test_data2/'
+# test_dir = '/media/kszlim/KevinLimHD/Music/Collection/Music/Foreign Beggars, Bare Noize, Skrillex/Scary Monsters And Nice Sprites/'
 # test_files = get_filepaths(test_dir)[1]
 # count = Counter()
 # for test_file in test_files:
