@@ -244,5 +244,3 @@ def regenerate_data():
 	create_json_dump()
 	generate_bins()
 	generate_bins(logarithmic_bins)
-
-test_results()

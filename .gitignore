@@ -1,4 +1,5 @@
-data.json
+venv/
+backup/
 old.json
 *.mp3
 test_data2/
