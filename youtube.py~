@@ -58,7 +58,7 @@ def download_youtube(artist, title):
     try:
 	url, data = search_song(artist, title)
         download_song(url)
-	return True
+        return (artist, title, data['title'])
     except Exception as e:
 	print 'Error downloading from youtube.'
         return False

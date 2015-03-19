@@ -1,47 +1,20 @@
 {
-    "static/downloaded_songs/Eminem - Lose Yourself (Official Music Video).mp3": {
-        "artist": "lose yourself", 
-        "duration": "2:23", 
-        "filename": "static/downloaded_songs/Eminem - Lose Yourself (Official Music Video).mp3", 
-        "genre": "rap", 
-        "mp3": "static/downloaded_songs/Eminem - Lose Yourself (Official Music Video).mp3", 
-        "rating": 4, 
-        "title": "eminem"
-    }, 
-    "static/downloaded_songs/Eminem - Love The Way You Lie ft. Rihanna.mp3": {
+    "static/downloaded_songs/Eminem - Mockingbird.mp3": {
         "artist": "eminem", 
-        "duration": "2:23", 
-        "filename": "static/downloaded_songs/Eminem - Love The Way You Lie ft. Rihanna.mp3", 
-        "genre": "rap", 
-        "mp3": "static/downloaded_songs/Eminem - Love The Way You Lie ft. Rihanna.mp3", 
+        "duration": "2:30", 
+        "filename": "static/downloaded_songs/Eminem - Mockingbird.mp3", 
+        "genre": "electronic", 
+        "mp3": "static/downloaded_songs/Eminem - Mockingbird.mp3", 
         "rating": 4, 
-        "title": "love the way you lie"
+        "title": "mockingbird"
     }, 
-    "static/downloaded_songs/John Lennon - Imagine - Lyrics.mp3": {
-        "artist": "beatles", 
-        "duration": "2:23", 
-        "filename": "static/downloaded_songs/John Lennon - Imagine - Lyrics.mp3", 
-        "genre": "rap", 
-        "mp3": "static/downloaded_songs/John Lennon - Imagine - Lyrics.mp3", 
+    "static/downloaded_songs/Kendrick Lamar - Backseat Freestyle (Explicit).mp3": {
+        "artist": "kendrick", 
+        "duration": "2:30", 
+        "filename": "static/downloaded_songs/Kendrick Lamar - Backseat Freestyle (Explicit).mp3", 
+        "genre": "electronic", 
+        "mp3": "static/downloaded_songs/Kendrick Lamar - Backseat Freestyle (Explicit).mp3", 
         "rating": 4, 
-        "title": "imagine"
-    }, 
-    "static/downloaded_songs/Queen - Bohemian Rhapsody (Official Video).mp3": {
-        "artist": "Bohemian Rhapsody", 
-        "duration": "2:23", 
-        "filename": "static/downloaded_songs/Queen - Bohemian Rhapsody (Official Video).mp3", 
-        "genre": "rap", 
-        "mp3": "static/downloaded_songs/Queen - Bohemian Rhapsody (Official Video).mp3", 
-        "rating": 4, 
-        "title": "Queen"
-    }, 
-    "static/downloaded_songs/test.mp3": {
-        "artist": "eminem", 
-        "duration": "2:23", 
-        "filename": "static/downloaded_songs/test.mp3", 
-        "genre": "rap", 
-        "mp3": "static/downloaded_songs/test.mp3", 
-        "rating": 4, 
-        "title": "love the way you lie"
+        "title": "backseat"
     }
 }
