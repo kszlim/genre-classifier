@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 import datetime
-from classify import classify, get_duration_formatted
+from classify import classify, get_duration_formatted, load_json_dump
 from youtube import download_youtube
 import json
 from pymongo import MongoClient
@@ -81,16 +81,29 @@ def player():
 
 @app.route("/playlist")
 def playlist_():
-	#return json.dumps([])
-	return json.dumps([{'genre': 'metal', 'mp3':'static/mix/1.mp3', 'title':'Sample', 'artist':'Sample', 'rating':4, 'duration':'0:29'}, {'mp3':'static/mix/1.mp3', 'title':'Sample', 'artist':'Sample', 'rating':4, 'duration':'0:29'}])
+	playlist = json.dumps(load_json_dump('classified_songs.json').values())
+	print 'playlist loaded: ', playlist
+	return playlist
 
 def do_job(artist, title):
 	download_youtube(artist, title)
+	json_dump = {}
+	try:		
+		json_dump = load_json_dump('classified_songs.json')
+	except:
+		pass
 	songs = glob.glob('static/downloaded_songs/*.mp3')
 	for song in songs:
-		if not db['classified_songs'].find_one({'filename': song}):
-			genre, data = classify(song)
-			db['classified_songs'].insert_one({'filename': song, 'genre': genre, 'mp3': song, 'title': title, 'artist': artist, 'duration': get_duration_formatted(song), 'rating': 4})
+		if song not in json_dump:
+			print song
+		 	#genre, data = classify(song)
+		 	#json_dump[song] = {'filename': song, 'genre': genre, 'mp3': song, 'title': title, 'artist': artist, 'duration': get_duration_formatted(song), 'rating': 4}
+		 	json_dump[song] = {'filename': song, 'genre': 'rap', 'mp3': song, 'title': title, 'artist': artist, 'duration': '2:23', 'rating': 4}
+		else:
+		 	print 'didnot'
+
+	with open('classified_songs.json', 'w') as outfile:
+		json.dump(json_dump, outfile, indent=4, sort_keys=True)
 
 def create_worker(artist, title):
 	Thread(target = do_job, args = (artist, title)).start()
@@ -100,13 +113,12 @@ def login():
     if request.method == 'POST':
 	    title = request.form['title']
 	    artist = request.form['artist']
-	    create_worker(title, artist)
-	    return 200
+	    create_worker(artist, title)
+	    return render_template('downloading.html')
     else:
         return 404
 
 
 if __name__ == "__main__":
-	create_worker('eminem', 'love the way you lie')
 	app.run(host = '0.0.0.0', port=5000, debug = True, use_reloader=False)
 

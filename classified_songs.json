@@ -1,0 +1,38 @@
+{
+    "static/downloaded_songs/Eminem - Lose Yourself (Official Music Video).mp3": {
+        "artist": "lose yourself", 
+        "duration": "2:23", 
+        "filename": "static/downloaded_songs/Eminem - Lose Yourself (Official Music Video).mp3", 
+        "genre": "rap", 
+        "mp3": "static/downloaded_songs/Eminem - Lose Yourself (Official Music Video).mp3", 
+        "rating": 4, 
+        "title": "eminem"
+    }, 
+    "static/downloaded_songs/Eminem - Love The Way You Lie ft. Rihanna.mp3": {
+        "artist": "eminem", 
+        "duration": "2:23", 
+        "filename": "static/downloaded_songs/Eminem - Love The Way You Lie ft. Rihanna.mp3", 
+        "genre": "rap", 
+        "mp3": "static/downloaded_songs/Eminem - Love The Way You Lie ft. Rihanna.mp3", 
+        "rating": 4, 
+        "title": "love the way you lie"
+    }, 
+    "static/downloaded_songs/Queen - Bohemian Rhapsody (Official Video).mp3": {
+        "artist": "Bohemian Rhapsody", 
+        "duration": "2:23", 
+        "filename": "static/downloaded_songs/Queen - Bohemian Rhapsody (Official Video).mp3", 
+        "genre": "rap", 
+        "mp3": "static/downloaded_songs/Queen - Bohemian Rhapsody (Official Video).mp3", 
+        "rating": 4, 
+        "title": "Queen"
+    }, 
+    "static/downloaded_songs/test.mp3": {
+        "artist": "eminem", 
+        "duration": "2:23", 
+        "filename": "static/downloaded_songs/test.mp3", 
+        "genre": "rap", 
+        "mp3": "static/downloaded_songs/test.mp3", 
+        "rating": 4, 
+        "title": "love the way you lie"
+    }
+}
