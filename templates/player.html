@@ -1,0 +1,62 @@
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='plugin/css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/demo.css') }}">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jplayer/2.9.2/jplayer/jquery.jplayer.js"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='plugin/ttw-music-player.js') }}"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id tortor nisi. Aenean sodales diam ac lacus elementum scelerisque. Suspendisse a dui vitae lacus faucibus venenatis vel id nisl. Proin orci ante, ultricies nec interdum at, iaculis venenatis nulla. ';
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    var myArr = JSON.parse(xmlhttp.responseText);
+                    renderPlaylist(myArr);
+                    // var result = (function(myArr){
+                    // var i;
+                    // console.log(myArr);
+                    // console.log(myArr.length);
+                    // console.log(myArr);
+                    // for(i = 0; i < myArr.length; i++){
+                    //     var new_array = []
+                    //     new_array.push({
+                    //         mp3: myArr[i].mp3,
+                    //         title: myArr[i].title,
+                    //         artist: myArr[i].artist,
+                    //         rating: myArr[i].rating,
+                    //         buy: myArr[i].buy,
+                    //         duration: myArr[i].duration,
+                    //     });
+                    //     renderPlaylist(new_array);
+                    //     console.log(result);
+                    // }})(myArr);
+                    
+                    
+                }
+            }
+            xmlhttp.open("GET", "http://localhost:5000/playlist", true);
+            xmlhttp.send();
+
+            function renderPlaylist(myPlaylist){
+
+
+                $('body').ttwMusicPlayer(myPlaylist, {
+                    autoPlay:false, 
+                    description:description,
+                    jPlayer:{
+                        swfPath:"{{ url_for('static', filename='plugin/jquery-jplayer.swf') }}" //You need to override the default swf path any time the directory structure changes
+                    }
+                });
+            };
+        });
+    </script>
+</head>
+<body>
+
+<div id="title"></div>
+</body>
+</html>

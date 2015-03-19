@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 import datetime
 from classify import classify
 from youtube import download_youtube
+import json
 
 
 app = Flask(__name__)
@@ -70,6 +71,14 @@ def button3(state):
 @app.route("/page1")
 def page_one():
 	return render_template('page_one.html')
+
+@app.route("/musicplayer")
+def player():
+	return render_template('player.html')
+
+@app.route("/playlist")
+def playlist_():
+	return json.dumps([{'genre': 'metal', 'mp3':'static/mix/1.mp3', 'title':'Sample', 'artist':'Sample', 'rating':4, 'buy':'#', 'duration':'0:29'}, {'mp3':'static/mix/1.mp3', 'title':'Sample', 'artist':'Sample', 'rating':4, 'buy':'#', 'duration':'0:29'}])
 
 if __name__ == "__main__":
 	app.run(host = '0.0.0.0', port=5000, debug = True, use_reloader=False)
