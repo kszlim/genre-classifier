@@ -1,11 +1,14 @@
 from flask import Flask, render_template, request
 import datetime
-from classify import classify
+from classify import classify, get_duration_formatted
 from youtube import download_youtube
 import json
-
+from pymongo import MongoClient
+import glob
+from threading import Thread
 
 app = Flask(__name__)
+db = MongoClient()['genre-classifier']
 
 button = {
 	1 :{'name':'item x','state':"False"},
@@ -78,7 +81,32 @@ def player():
 
 @app.route("/playlist")
 def playlist_():
-	return json.dumps([{'genre': 'metal', 'mp3':'static/mix/1.mp3', 'title':'Sample', 'artist':'Sample', 'rating':4, 'buy':'#', 'duration':'0:29'}, {'mp3':'static/mix/1.mp3', 'title':'Sample', 'artist':'Sample', 'rating':4, 'buy':'#', 'duration':'0:29'}])
+	#return json.dumps([])
+	return json.dumps([{'genre': 'metal', 'mp3':'static/mix/1.mp3', 'title':'Sample', 'artist':'Sample', 'rating':4, 'duration':'0:29'}, {'mp3':'static/mix/1.mp3', 'title':'Sample', 'artist':'Sample', 'rating':4, 'duration':'0:29'}])
+
+def do_job(artist, title):
+	download_youtube(artist, title)
+	songs = glob.glob('static/downloaded_songs/*.mp3')
+	for song in songs:
+		if not db['classified_songs'].find_one({'filename': song}):
+			genre, data = classify(song)
+			db['classified_songs'].insert_one({'filename': song, 'genre': genre, 'mp3': song, 'title': title, 'artist': artist, 'duration': get_duration_formatted(song), 'rating': 4})
+
+def create_worker(artist, title):
+	Thread(target = do_job, args = (artist, title)).start()
+
+@app.route('/download', methods=['POST'])
+def login():
+    if request.method == 'POST':
+	    title = request.form['title']
+	    artist = request.form['artist']
+	    create_worker(title, artist)
+	    return 200
+    else:
+        return 404
+
 
 if __name__ == "__main__":
+	create_worker('eminem', 'love the way you lie')
 	app.run(host = '0.0.0.0', port=5000, debug = True, use_reloader=False)
+

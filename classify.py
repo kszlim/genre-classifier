@@ -24,6 +24,14 @@ def squared_euclidean(arr1, arr2):
 def get_filepaths(base_directory):
 	return (base_directory.split('/')[-2], glob.glob(base_directory + '*.mp3') + glob.glob(base_directory + '*.m4a') + glob.glob(base_directory + '*.flac'))
 
+def get_duration_formatted(filepath):
+	data, sr = librosa.load(filepath, sr=32000)
+	seconds = librosa.get_duration(y=data, sr=sr)
+	m, s = divmod(seconds, 60)
+	h, m = divmod(m, 60)
+	return "%d:%02d:%02d" % (h, m, s)
+
+
 def extract_samples(filepath, offset=60):
 	data, sample_rate = librosa.load(filepath, sr=32000, offset=offset, duration=60.0)
 	data_max, data_min = max(data) - min(data), min(data)

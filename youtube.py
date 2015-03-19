@@ -38,7 +38,7 @@ def search_song(artist, song_name):
 
 def download_song(songUrl):
   ydl_opts = {
-   'outtmpl': 'downloaded_songs/%(title)s.%(ext)s',
+   'outtmpl': 'static/downloaded_songs/%(title)s.%(ext)s',
    'format': 'bestaudio/best',
    'postprocessors': [{
        'key': 'FFmpegExtractAudio',
