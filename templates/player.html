@@ -38,7 +38,7 @@
                     
                 }
             }
-            xmlhttp.open("GET", "http://localhost:5000/playlist", true);
+            xmlhttp.open("GET", "{{ url_for('playlist_' )}}", true);
             xmlhttp.send();
 
             function renderPlaylist(myPlaylist){

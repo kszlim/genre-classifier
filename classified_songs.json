@@ -17,6 +17,15 @@
         "rating": 4, 
         "title": "love the way you lie"
     }, 
+    "static/downloaded_songs/John Lennon - Imagine - Lyrics.mp3": {
+        "artist": "beatles", 
+        "duration": "2:23", 
+        "filename": "static/downloaded_songs/John Lennon - Imagine - Lyrics.mp3", 
+        "genre": "rap", 
+        "mp3": "static/downloaded_songs/John Lennon - Imagine - Lyrics.mp3", 
+        "rating": 4, 
+        "title": "imagine"
+    }, 
     "static/downloaded_songs/Queen - Bohemian Rhapsody (Official Video).mp3": {
         "artist": "Bohemian Rhapsody", 
         "duration": "2:23", 

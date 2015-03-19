@@ -6,9 +6,11 @@ import json
 from pymongo import MongoClient
 import glob
 from threading import Thread
+from flask_cors import CORS
 
 app = Flask(__name__)
-db = MongoClient()['genre-classifier']
+cors = CORS(app)
+#db = MongoClient()['genre-classifier']
 
 button = {
 	1 :{'name':'item x','state':"False"},
