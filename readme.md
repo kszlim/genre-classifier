@@ -8,3 +8,4 @@ install lapack/atlas
 sudo apt-get install libblas-dev
 sudo apt-get install liblapack-dev
 sudo apt-get install gofortran
+sudo apt-get install python-audioread
