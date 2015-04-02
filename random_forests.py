@@ -48,16 +48,16 @@ def create_model_4():
 	knn = KNeighborsClassifier(9).fit(data, labels)
 	return knn
 
-test_data, test_labels = format_binned_data('test_data/logarithmic_bins_test_data.json')
+# test_data, test_labels = format_binned_data('test_data/logarithmic_bins_test_data.json')
 test_data2, test_labels2 = create_data()
 test_data2 = test_data2[1::2]
 test_labels2 = test_labels2[1::2]
 
-predictor = create_model()
-print(predictor.score(test_data2, test_labels2))
+# predictor = create_model()
+# print(predictor.score(test_data2, test_labels2))
 
 # predictor = create_model_2()
 # print(predictor.score(test_data, test_labels))
 
-# predictor2 = create_model_4()
-# print(predictor2.score(test_data2, test_labels2))
+predictor2 = create_model_4()
+print(predictor2.score(test_data2, test_labels2))
