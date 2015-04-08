@@ -37,9 +37,9 @@ def search_song(artist, song_name):
   return youtube_search(options)
 
 
-def download_song(songUrl):
+def download_song(songUrl, artist, title):
   ydl_opts = {
-   'outtmpl': 'static/downloaded_songs/%(title)s.%(ext)s',
+   'outtmpl': 'static/downloaded_songs/' + artist + ' - ' + title + '.%(ext)s',
    'format': 'bestaudio/best',
    'postprocessors': [{
        'key': 'FFmpegExtractAudio',
@@ -51,14 +51,17 @@ def download_song(songUrl):
    }
 
   with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-   ydl.download([songUrl])
+    print 'params', ydl.params.get('outtmpl')
+    ydl.download([songUrl])
+
+  return 'static/downloaded_songs/' + artist + ' - ' + title + '.mp3'
 
 
 def download_youtube(artist, title):
-    try:
-	url, data = search_song(artist, title)
-        download_song(url)
-	return True
-    except Exception as e:
-	print 'Error downloading from youtube.'
-        return False
+  try:
+    url, data = search_song(artist, title)
+    path = download_song(url, artist, title)
+    return True, path
+  except Exception as e:
+    print 'Error downloading from youtube.'
+    return False

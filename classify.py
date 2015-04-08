@@ -7,11 +7,12 @@ import matplotlib.pyplot as plt
 from collections import Counter
 from math import sqrt
 from config import directories, genres
+from audioread import audio_open
 
 
 class NumpyAwareJSONEncoder(json.JSONEncoder):
     def default(self, obj):
-        if isinstance(obj, np.ndarray) and obj.ndim == 1:
+        if isinstance(obj, np.ndarray):
             return obj.tolist()
         return json.JSONEncoder.default(self, obj)
 
@@ -25,23 +26,79 @@ def get_filepaths(base_directory):
 	return (base_directory.split('/')[-2], glob.glob(base_directory + '*.mp3') + glob.glob(base_directory + '*.m4a') + glob.glob(base_directory + '*.flac'))
 
 def get_duration_formatted(filepath):
-	data, sr = librosa.load(filepath, sr=32000)
-	seconds = librosa.get_duration(y=data, sr=sr)
-	m, s = divmod(seconds, 60)
-	h, m = divmod(m, 60)
-	return "%d:%02d:%02d" % (h, m, s)
+	with audio_open(filepath) as f:
+		m, s = divmod(f.duration, 60)
+		h, m = divmod(m, 60)
+	return "%02d:%02d" % (m, s)
 
 
 def extract_samples(filepath, offset=60):
+	with audio_open(filepath) as f:
+		if f.duration < 120.0:
+			return None, None
 	data, sample_rate = librosa.load(filepath, sr=32000, offset=offset, duration=60.0)
 	data_max, data_min = max(data) - min(data), min(data)
 	data = (data - data_min)/(data_max)
 	return data, sample_rate
 
+def extract_samples2(filepath, offset=20):
+	with audio_open(filepath) as f:
+		if f.duration < 120.0:
+			return None, None
+	data, sample_rate = librosa.load(filepath, sr=32000, offset=offset, duration=60.0)
+	data_max, data_min = max(data) - min(data), min(data)
+	data = (data - data_min)/(data_max)
+	return data, sample_rate
+
+def get_fft2(filepath, window_length=1024):
+	data, sample_rate = extract_samples2(filepath)
+	if data == None:
+		return None, None, None
+	data = list(data)
+	print 'started'
+	while len(data) % 1024 != 0:
+		data.pop()
+	print 'started2'
+	data = np.array(data)
+	data = data.reshape(-1, window_length)
+	print 'datashape is', data.shape
+	last_data_index = data.shape[0] - (data.shape[0] % 125)
+	print 'started3'
+	new_data = [np.sum(abs(np.fft.fft(data[x:x+125:])), axis=0)[1:window_length/2 + 1:] for x in xrange(0, last_data_index, 125)]
+	print 'started4'
+	freq = np.fft.fftfreq(window_length, d=1.0/sample_rate)
+	bins = freq[:window_length/2:]
+	# assert data.shape[0] == len(bins) 
+	return new_data, sample_rate, bins
+
+def create_json_dump2(output_path='training_data/data3.json', pretty=True):
+	data = {}
+	for directory in directories:
+		genre, filepaths = get_filepaths(directory)
+		filepaths = filepaths[100:150:]
+		data[genre] = {}
+		for index, filepath in enumerate(filepaths):
+			print 'Done: ' + str(index) + ' ' + filepath
+			try:
+				fft_data, sample_rate, bins = get_fft2(filepath)
+				if fft_data == None:
+					continue
+				for snapshot_index, fft_snapshot in enumerate(fft_data):
+					data[genre][os.path.basename(filepath) + str(snapshot_index)] = {'raw_fft_data': fft_snapshot}
+			except:
+				continue
+	with open(output_path, 'w') as outfile:
+		if pretty:
+			json.dump(data, outfile, cls=NumpyAwareJSONEncoder, indent=4, sort_keys=True)
+		else:
+			json.dump(data, outfile, cls=NumpyAwareJSONEncoder)
+
 def get_fft(filepath, window_length=1024):
 	data, sample_rate = extract_samples(filepath)
-	if data.shape[0] != 1920000:
+	if data == None:
 		data, sample_rate = extract_samples(filepath, offset=20)
+	if data.shape[0] != 1920000:
+		data, sample_rate = extract_samples(filepath, offset=0)
 	assert(data.shape[0] == 1920000), filepath + ' does not contain correct number of samples.'
 	data = data.reshape(-1, window_length)
 	data = abs(np.fft.fft(data))
@@ -60,6 +117,8 @@ def create_json_dump(output_path='training_data/data.json', pretty=False):
 			print 'Done: ' + str(index)
 			try:
 				fft_data, sample_rate, bins = get_fft(filepath)
+				if fft_data == None:
+					continue
 				data[genre][os.path.basename(filepath)] = {'raw_fft_data': fft_data, 'sample_rate': sample_rate, 'bins': bins}
 			except:
 				continue
@@ -252,3 +311,8 @@ def regenerate_data():
 	create_json_dump()
 	generate_bins()
 	generate_bins(logarithmic_bins)
+
+# get_fft2('songs/em.mp3')[0]
+# for x in get_fft2('songs/em.mp3')[0]:
+# 	print x
+# create_json_dump2()

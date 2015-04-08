@@ -1,6 +1,8 @@
 from sklearn.ensemble import RandomForestClassifier
-from classify import load_json_dump, normalize
+from classify import load_json_dump, normalize, get_fft2, get_fft
 from sklearn.neighbors import KNeighborsClassifier
+import re
+import numpy as np
 
 
 def create_classifier_and_fit(data, labels):
@@ -8,13 +10,23 @@ def create_classifier_and_fit(data, labels):
 	forest.fit(data, labels)
 	return forest
 
-def create_data(raw_data = load_json_dump()):
+def create_data(raw_data = load_json_dump('training_data/data.json')):
 	data = []
 	labels = []
 	for key in raw_data:
 		for song in raw_data[key].values():
 			data.append(normalize(song['raw_fft_data']))
 			labels.append(key)
+	return data, labels
+
+def create_song_data(file_name, raw_data = load_json_dump('training_data/data3.json')):
+	data = []
+	labels = []
+	for key in raw_data:
+		for song_title, song in raw_data[key].iteritems():
+			if song_title.startswith(file_name):
+				data.append(normalize(song['raw_fft_data']))
+				labels.append(key)
 	return data, labels
 
 def format_binned_data(path):
@@ -28,8 +40,10 @@ def format_binned_data(path):
 
 def create_model():
 	data, labels = create_data()
-	data = data[::2]
-	labels = labels[::2]
+	return create_classifier_and_fit(data, labels)
+
+def create_summed_model():
+	data, labels = create_data(raw_data = load_json_dump('training_data/data2.json'))
 	return create_classifier_and_fit(data, labels)
 
 def create_model_2():
@@ -48,18 +62,16 @@ def create_model_4():
 	knn = KNeighborsClassifier(9).fit(data, labels)
 	return knn
 
-# test_data, test_labels = format_binned_data('test_data/logarithmic_bins_test_data.json')
-test_data2, test_labels2 = create_data()
-test_data2 = test_data2[1::2]
-test_labels2 = test_labels2[1::2]
+def rf_classify(path, predictor):
+	data, sr, bins = get_fft(path)
+	data = normalize(data)
+	return (predictor.classes_, predictor.predict_proba(data), predictor.predict(data))
 
-print('creating model')
-predictor = create_model()
-print('model created')
-print(predictor.score(test_data2, test_labels2))
+def summed_classification2(path, predictor):
+	data, sr, bins = get_fft2(path)
+	data = [normalize(sample) for sample in data]
+	return np.sum(predictor.predict_proba(data), axis=0), predictor.classes_
 
-# predictor = create_model_2()
-# print(predictor.score(test_data, test_labels))
-
-#predictor2 = create_model_4()
-#print(predictor2.score(test_data2, test_labels2))
+def get_class2(path, predictor):
+	summed_probs, classes = summed_classification(path, predictor)
+	return classes[summed_probs.argmax()]

@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import datetime
 from classify import classify, get_duration_formatted, load_json_dump
+from random_forests import create_model, rf_classify
 from youtube import download_youtube
 import json
 from pymongo import MongoClient
@@ -11,6 +12,8 @@ from flask_cors import CORS
 app = Flask(__name__)
 cors = CORS(app)
 #db = MongoClient()['genre-classifier']
+
+predictor = create_model()
 
 button = {
 	1 :{'name':'item x','state':"False"},
@@ -88,22 +91,15 @@ def playlist_():
 	return playlist
 
 
-
-def do_job(artist, title):
-	download_youtube(artist, title)
+json_dump = {}
+try:		
+	json_dump = load_json_dump('classified_songs.json')
+except:
 	json_dump = {}
-	try:		
-		json_dump = load_json_dump('classified_songs.json')
-	except:
-		pass
-	songs = glob.glob('static/downloaded_songs/*.mp3')
-	for index, song in enumerate(songs):
-		if song not in json_dump:
-	            genre, data = classify(song)
-	            json_dump[song] = {'filename': song, 'genre': genre, 'mp3': song, 'title': title, 'artist': artist, 'duration': '2:30', 'rating': 4}
-    		 	#json_dump[song] = {'filename': song, 'genre': 'rap', 'mp3': song, 'title': title, 'artist': artist, 'duration': '2:23', 'rating': 4}
-		else:
-		 	print 'didnot'
+def do_job(artist, title):
+	status, song = download_youtube(artist, title)
+        labels, probabilities, genre = rf_classify(song, predictor)
+        json_dump[song] = {'filename': song, 'genre': genre[0], 'mp3': song, 'confidence': max(probabilities[0]), 'title': title, 'artist': artist, 'duration': get_duration_formatted(song), 'rating': 4}		 	
 
 	with open('classified_songs.json', 'w') as outfile:
 		json.dump(json_dump, outfile, indent=4, sort_keys=True)
@@ -114,10 +110,10 @@ def create_worker(artist, title):
 @app.route('/download', methods=['POST'])
 def download():
 	try:
-	        if request.method == 'POST':
+		if request.method == 'POST':
 			title = request.form['title']
 			artist = request.form['artist']
-	  		create_worker(artist, title)
+			create_worker(artist, title)
 			return render_template('downloading.html')
 	except:
 		pass

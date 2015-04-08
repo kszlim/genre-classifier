@@ -7,10 +7,11 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jplayer/2.9.2/jplayer/jquery.jplayer.js"></script>
 
     <script type="text/javascript" src="{{ url_for('static', filename='plugin/ttw-music-player.js') }}"></script>
-
+    <script src="https://cdn.firebase.com/js/client/2.2.3/firebase.js"></script>
     <script type="text/javascript">
+
         $(document).ready(function(){
-            var description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id tortor nisi. Aenean sodales diam ac lacus elementum scelerisque. Suspendisse a dui vitae lacus faucibus venenatis vel id nisl. Proin orci ante, ultricies nec interdum at, iaculis venenatis nulla. ';
+            var description = 'You can use voice controls to control the player. Use commands like "pause, play, next, previous" in order to control the player.';
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -34,7 +35,30 @@
                     //     renderPlaylist(new_array);
                     //     console.log(result);
                     // }})(myArr);
-                    
+        var firebase = new Firebase("https://381.firebaseio.com/player/status");
+        firebase.on("child_changed", function(snapshot) {
+          var changedPost = snapshot.val();
+          switch(changedPost) {
+            case 'play':
+                $("div.play.jp-play").click();
+                firebase.set({"status": "Idle"});
+                break;
+            case 'pause':
+                $("div.pause.jp-pause").click();
+                firebase.set({"status": "Idle"});
+                break;
+            case 'back':
+                $("div.previous.jp-previous").click();
+                firebase.set({"status": "Idle"});
+                break;
+            case 'next':
+                $("div.next.jp-next").click();
+                firebase.set({"status": "Idle"});
+                break;
+            default:
+                break;
+            }
+        });
                     
                 }
             }

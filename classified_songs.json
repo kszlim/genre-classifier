@@ -1,20 +1,102 @@
 {
-    "static/downloaded_songs/Eminem - Mockingbird.mp3": {
+    "static/downloaded_songs/chopin - winter wind.mp3": {
+        "artist": "chopin", 
+        "confidence": 0.885, 
+        "duration": "04:01", 
+        "filename": "static/downloaded_songs/chopin - winter wind.mp3", 
+        "genre": "classical", 
+        "mp3": "static/downloaded_songs/chopin - winter wind.mp3", 
+        "rating": 4, 
+        "title": "winter wind"
+    }, 
+    "static/downloaded_songs/dragonforce - through the fire and flames.mp3": {
+        "artist": "dragonforce", 
+        "confidence": 0.515, 
+        "duration": "05:00", 
+        "filename": "static/downloaded_songs/dragonforce - through the fire and flames.mp3", 
+        "genre": "metal", 
+        "mp3": "static/downloaded_songs/dragonforce - through the fire and flames.mp3", 
+        "rating": 4, 
+        "title": "through the fire and flames"
+    }, 
+    "static/downloaded_songs/eminem - lose yourself.mp3": {
         "artist": "eminem", 
-        "duration": "2:30", 
-        "filename": "static/downloaded_songs/Eminem - Mockingbird.mp3", 
-        "genre": "electronic", 
-        "mp3": "static/downloaded_songs/Eminem - Mockingbird.mp3", 
+        "confidence": 0.57299999999999995, 
+        "duration": "05:17", 
+        "filename": "static/downloaded_songs/eminem - lose yourself.mp3", 
+        "genre": "metal", 
+        "mp3": "static/downloaded_songs/eminem - lose yourself.mp3", 
+        "rating": 4, 
+        "title": "lose yourself"
+    }, 
+    "static/downloaded_songs/eminem - mockingbird.mp3": {
+        "artist": "eminem", 
+        "confidence": 0.758, 
+        "duration": "04:18", 
+        "filename": "static/downloaded_songs/eminem - mockingbird.mp3", 
+        "genre": "rap", 
+        "mp3": "static/downloaded_songs/eminem - mockingbird.mp3", 
         "rating": 4, 
         "title": "mockingbird"
     }, 
-    "static/downloaded_songs/Kendrick Lamar - Backseat Freestyle (Explicit).mp3": {
-        "artist": "kendrick", 
-        "duration": "2:30", 
-        "filename": "static/downloaded_songs/Kendrick Lamar - Backseat Freestyle (Explicit).mp3", 
-        "genre": "electronic", 
-        "mp3": "static/downloaded_songs/Kendrick Lamar - Backseat Freestyle (Explicit).mp3", 
+    "static/downloaded_songs/eminem - rap god.mp3": {
+        "artist": "eminem", 
+        "confidence": 0.47399999999999998, 
+        "duration": "06:09", 
+        "filename": "static/downloaded_songs/eminem - rap god.mp3", 
+        "genre": "rap", 
+        "mp3": "static/downloaded_songs/eminem - rap god.mp3", 
         "rating": 4, 
-        "title": "backseat"
+        "title": "rap god"
+    }, 
+    "static/downloaded_songs/kendrick lamar - King Kunta.mp3": {
+        "artist": "kendrick lamar", 
+        "confidence": 0.62, 
+        "duration": "03:57", 
+        "filename": "static/downloaded_songs/kendrick lamar - King Kunta.mp3", 
+        "genre": "rap", 
+        "mp3": "static/downloaded_songs/kendrick lamar - King Kunta.mp3", 
+        "rating": 4, 
+        "title": "King Kunta"
+    }, 
+    "static/downloaded_songs/kendrick lamar - i.mp3": {
+        "artist": "kendrick lamar", 
+        "confidence": 0.487, 
+        "duration": "04:42", 
+        "filename": "static/downloaded_songs/kendrick lamar - i.mp3", 
+        "genre": "metal", 
+        "mp3": "static/downloaded_songs/kendrick lamar - i.mp3", 
+        "rating": 4, 
+        "title": "i"
+    }, 
+    "static/downloaded_songs/krewella - alive.mp3": {
+        "artist": "krewella", 
+        "confidence": 0.766, 
+        "duration": "03:26", 
+        "filename": "static/downloaded_songs/krewella - alive.mp3", 
+        "genre": "electronic", 
+        "mp3": "static/downloaded_songs/krewella - alive.mp3", 
+        "rating": 4, 
+        "title": "alive"
+    }, 
+    "static/downloaded_songs/megadeth - sweating bullets.mp3": {
+        "artist": "megadeth", 
+        "confidence": 0.535, 
+        "duration": "04:27", 
+        "filename": "static/downloaded_songs/megadeth - sweating bullets.mp3", 
+        "genre": "metal", 
+        "mp3": "static/downloaded_songs/megadeth - sweating bullets.mp3", 
+        "rating": 4, 
+        "title": "sweating bullets"
+    }, 
+    "static/downloaded_songs/zedd - clarity.mp3": {
+        "artist": "zedd", 
+        "confidence": 0.438, 
+        "duration": "04:35", 
+        "filename": "static/downloaded_songs/zedd - clarity.mp3", 
+        "genre": "electronic", 
+        "mp3": "static/downloaded_songs/zedd - clarity.mp3", 
+        "rating": 4, 
+        "title": "clarity"
     }
 }
