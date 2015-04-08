@@ -30,6 +30,7 @@
             ratingLevelOn:'.on',
             title: '.title',
             genre: '.genre',
+            confidence: '.confidence',
             duration: '.duration',
             playing:'.playing',
             moreButton:'.more',
@@ -186,7 +187,6 @@
 
                 if (index >= options.tracksToShow)
                     showMore();
-
                 $self.trigger('mbPlaylistAdvance');
                 $myJplayer.jPlayer("play");
             }
@@ -225,6 +225,8 @@
                     $track.find(cssSelector.title).html(trackName(j));
 
                     $track.find(cssSelector.genre).html(genreName(j));
+
+                    $track.find(cssSelector.confidence).html(confidence(j));
 
                     $track.find(cssSelector.duration).html(duration(j));
 
@@ -345,13 +347,14 @@
 
         interfaceMgr = function() {
 
-            var $player, $title, $artist, $albumCover, $genre;
+            var $player, $title, $artist, $albumCover, $genre, $confidence;
 
 
             function init() {
                 $player = $(cssSelector.player),
                         $title = $player.find(cssSelector.title),
                         $genre = $player.find(cssSelector.genre),
+                        $confidence = $player.find(cssSelector.confidence),
                         $artist = $player.find(cssSelector.artist),
                         $albumCover = $player.find(cssSelector.albumCover);
 
@@ -360,6 +363,7 @@
                 $self.bind('mbPlaylistAdvance mbPlaylistInit', function() {
                     setTitle();
                     setGenre();
+                    setConfidence();
                     setArtist();
                     setRating('current', null, current);
                     setCover();
@@ -387,6 +391,7 @@
                         '                <span class="rating-level rating-star"></span>' +
                         '            </div>' +
                         '            <p>Probable Genre - </p><p class="Probable Genre"></p>' +
+                        '            <p>Confidence - </p><p class="confidence"></p>' +
                         '        </div>' +
                         '        <div class="player-controls">' +
                         '            <div class="main">' +
@@ -446,6 +451,14 @@
                 }
             }
 
+            function setConfidence() {
+                if (isUndefined(myPlaylist[current].confidence))
+                    $confidence.html('Unknown');
+                else {
+                    $confidence.html(myPlaylist[current].confidence);
+                }
+            }
+
             function setArtist() {
                 if (isUndefined(myPlaylist[current].artist))
                     $artist.parent(cssSelector.artistOuter).animate({opacity:0}, 'fast');
@@ -492,6 +505,12 @@
         function genreName(index) {
             if (!isUndefined(myPlaylist[index].genre))
                 return myPlaylist[index].genre;
+            else return 'Unknown';
+        }
+
+        function confidence(index) {
+            if (!isUndefined(myPlaylist[index].confidence))
+                return myPlaylist[index].confidence;
             else return 'Unknown';
         }
 

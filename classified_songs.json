@@ -21,7 +21,7 @@
     }, 
     "static/downloaded_songs/eminem - lose yourself.mp3": {
         "artist": "eminem", 
-        "confidence": 0.57299999999999995, 
+        "confidence": 0.573, 
         "duration": "05:17", 
         "filename": "static/downloaded_songs/eminem - lose yourself.mp3", 
         "genre": "metal", 
@@ -41,13 +41,23 @@
     }, 
     "static/downloaded_songs/eminem - rap god.mp3": {
         "artist": "eminem", 
-        "confidence": 0.47399999999999998, 
+        "confidence": 0.474, 
         "duration": "06:09", 
         "filename": "static/downloaded_songs/eminem - rap god.mp3", 
         "genre": "rap", 
         "mp3": "static/downloaded_songs/eminem - rap god.mp3", 
         "rating": 4, 
         "title": "rap god"
+    }, 
+    "static/downloaded_songs/eminem - when i'm gone.mp3": {
+        "artist": "eminem", 
+        "confidence": 0.5, 
+        "duration": "06:08", 
+        "filename": "static/downloaded_songs/eminem - when i'm gone.mp3", 
+        "genre": "rap", 
+        "mp3": "static/downloaded_songs/eminem - when i'm gone.mp3", 
+        "rating": 4, 
+        "title": "when i'm gone"
     }, 
     "static/downloaded_songs/kendrick lamar - King Kunta.mp3": {
         "artist": "kendrick lamar", 
