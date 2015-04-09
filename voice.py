@@ -2,6 +2,7 @@ import wit
 import json
 from firebase import firebase
 import time
+import requests
 
 wit_access_token = 'IDWUGDNBHGWFLUYQJVWXAZ33YD73CTIJ'
 
@@ -35,7 +36,10 @@ def listen(intents):
 		print('Response: {}'.format(response))
 		for outcome in response['outcomes']:
 			if outcome['intent'] in intents:
-				if intents[outcome['intent']]() == True:
+				if outcome['intent'] == 'youtube':
+					print 'sending request'
+					intents[outcome['intent']](outcome['entities']['search_query'][0]['value'])
+				elif intents[outcome['intent']]() == True:
 					return listen(intents)
 				break
 
@@ -55,13 +59,21 @@ def create_intents(firebase=setup_db()):
 		firebase.put('/player', 'status', {'status': 'back'})
 
 	def next_music():
-		firebase.put('/player', 'status', {'status': 'next'})
+		print 'here'
+		result = firebase.put('/player', 'status', {'status': 'next'})
+		print 'result', result
+
+	def youtube(text):
+		print 'sent request'
+		requests.post("http://localhost:8080/voice", data={'artist': '', 'title': text})
+		print 'request sent'
 
 	intents['shutdown'] = shutdown
 	intents['play_music'] = play_music
 	intents['pause_music'] = pause_music
 	intents['back_music'] = back_music
 	intents['next_music'] = next_music
+	intents['youtube'] = youtube
 
 	return intents
 
@@ -72,6 +84,6 @@ def test_wit():
 	print('Response: {}'.format(response))
 	wit.close()
 
-#test_wit()
+# test_wit()
 setup_wit()
 listen(create_intents())
