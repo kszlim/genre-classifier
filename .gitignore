@@ -1,3 +1,5 @@
+serialiazed_model/
+*.npy
 venv/
 backup/
 old.json
